@@ -6,7 +6,6 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults } from "@stencil/router";
-import { apidata } from "./components/types";
 export namespace Components {
     interface AppHome {
     }
@@ -60,7 +59,6 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface MyButton {
-        "onMyEvent"?: (event: CustomEvent<apidata>) => void;
         "text"?: string;
     }
     interface IntrinsicElements {
