@@ -1,5 +1,5 @@
-import { Component, Host, h, Prop, State, EventEmitter, Event } from '@stencil/core';
-import { apidata } from '../types';
+import { Component,EventEmitter, h, Host, Prop, State } from '@stencil/core';
+import { ITodo } from '../types';
 
 @Component({
   tag: 'my-button',
@@ -8,34 +8,65 @@ import { apidata } from '../types';
 })
 export class MyButton {
   @Prop() text: string;
-  @State() count: number = 0;
-  @State() data: apidata;
+  // @State() count: number = 0;
+  @State() todo: ITodo;
+  // @State() todos: ITodo[]= [];
+  @State() todos: Array<ITodo>= [];
 
-  @Event() myEvent: EventEmitter<apidata>
-  // @Listen('click', {capture: true})
-  handleClick() {
-    this.count = this.count + 1;
-    this.myEvent.emit(this.data)
-  }
+  // @Event() changeTask: EventEmitter<ITodo>
+  // @Listen ('changeTask', {capture: true})
+  // handleClick() {
+  //   this.count = this.count + 1;
+  //   this.myEvent.emit()
+  // }
 
-  connectedCallback() {
-    fetch("https://jsonplaceholder.typicode.com/todos/1")
-    // fetch("https://dm-tdb-01.azurewebsites.net/api/ToDo")
+  async componentWillRender() {
+    // await fetch("https://jsonplaceholder.typicode.com/todos/1")
+    await fetch("https://dm-tdb-01.azurewebsites.net/api/ToDo")
       .then(response => response.json())
       .then(json => {
-        this.data = json;
-        console.log(json);
+        this.todos= json;
+        console.log('clg de json 3 ', json);
       });
   }
+
+//   changeTaskHandler(){
+//     // const event = this.changeTask.emit(todo);
+//     this.changeTask.emit(this.todo);
+// var j = 0;
+//     if( j < this.todos.length){
+//       j++
+//   }else {
+//     j--
+//      }
+//  }
+
 
   render() {
     return (
       <Host>
-        <h1>{this.count}</h1>
-        <slot name='fromage'></slot>
-        <h2>{this.data ? this.data.title : 'loading ... '}</h2>
-        <slot></slot>
-        <button onClick={() => this.handleClick()}> {this.text}</button>
+        {/* <h1>{this.count}</h1> */}
+        {/* <p > data to do : {this.todos.length ===0 ? 'loading ... ' : this.todos }</p> */}
+        
+          <p> 
+          <span>  Les APIs 'TO DO':</span><hr />
+           {this.todos.map((todo) =>
+          <div>
+          <div>Completed: {todo.completed === true ? 'YES'  : 'NO'}</div>
+          <div>ID: {todo.id}</div>
+          <div>Order: {todo.order}</div>
+          <div>Title: {todo.title}</div>
+          <div>URL: {todo.url}</div>
+          <hr />
+        </div>
+      )}</p>
+
+       {/* <div class="controls">
+    <button class="btn prev-btn" {this.changeTask.emit()}>Previous</button>
+    <button class="btn next-btn" {this.changeTask.emit()}>Next</button>
+  </div>
+
+        */}
       </Host>
     );
   }

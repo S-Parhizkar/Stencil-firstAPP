@@ -15,16 +15,18 @@ export class AppHome {
     return (
       <div class="app-home">
         <p>
-          Welcome to the new API. You can use this starter to build entire apps all with web components using Stencil! Check out our docs on{' '}
-          <a href="https://stenciljs.com">stenciljs.com</a> to get started.
+          Welcome to the new to do API. You can use the buttons to see other tasks to do. 
+          To see entire "to do" list check out the docs on{' '}
+          <a href="https://dm-tdb-01.azurewebsites.net/api/ToDo">To do tasks list</a> .
         </p>
 
-        <stencil-route-link url="/profile/stencil">
+        {/* <stencil-route-link url="/profile/stencil">
           <button>Profile page</button>
-        </stencil-route-link>
-        <my-button text='hello'> <h1 slot='fromage'>Hello world</h1></my-button>
-        <my-button text='fromage'> <h1>Hello world</h1></my-button>
-        <my-button text='du vin'> <h1>Hello world</h1></my-button>
+        </stencil-route-link> */}
+
+        {/* <my-button text='hello'> <h1 >Hello world</h1></my-button> */}
+        {/* <my-button text='fromage'> <h1>Hello world</h1></my-button>
+        <my-button text='du vin'> <h1>Hello world</h1></my-button> */}
       </div>
     );
   }
