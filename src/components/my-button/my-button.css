@@ -2,22 +2,27 @@
   display: block;
 }
 
-.btn {
+button {
   background-color: blue;
   border: transparent;
   border-radius: 0.25em;
   color: white;
-  font-size: 1.25em;
+  font-size: 1em;
   margin: 0 0.25em;
-  padding: 0.5em 1em;
+  height:30px;
+  padding: 0.2em 0.5em;
 }
 
-.btn:disabled {
+button:disabled {
   opacity: 0.5;
 }
 
-span {
-  color: var(--primary-70);
-  font-weight: bold;
-  font-size: 20px;
-}
+input{
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #848484;
+	outline:0;
+	height:30px;
+	width: 80%;
+ }

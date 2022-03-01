@@ -5,17 +5,19 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { MatchResults } from "@stencil/router";
+import { ITodo } from "./components/types";
 export namespace Components {
     interface AppHome {
     }
-    interface AppProfile {
-        "match": MatchResults;
-    }
-    interface AppRoot {
+    interface ListTodo {
+        "todos": Array<ITodo>;
     }
     interface MyButton {
         "text": string;
+    }
+    interface ToDo {
+        "checked": boolean;
+        "todo": ITodo;
     }
 }
 declare global {
@@ -25,17 +27,11 @@ declare global {
         prototype: HTMLAppHomeElement;
         new (): HTMLAppHomeElement;
     };
-    interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {
+    interface HTMLListTodoElement extends Components.ListTodo, HTMLStencilElement {
     }
-    var HTMLAppProfileElement: {
-        prototype: HTMLAppProfileElement;
-        new (): HTMLAppProfileElement;
-    };
-    interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {
-    }
-    var HTMLAppRootElement: {
-        prototype: HTMLAppRootElement;
-        new (): HTMLAppRootElement;
+    var HTMLListTodoElement: {
+        prototype: HTMLListTodoElement;
+        new (): HTMLListTodoElement;
     };
     interface HTMLMyButtonElement extends Components.MyButton, HTMLStencilElement {
     }
@@ -43,29 +39,37 @@ declare global {
         prototype: HTMLMyButtonElement;
         new (): HTMLMyButtonElement;
     };
+    interface HTMLToDoElement extends Components.ToDo, HTMLStencilElement {
+    }
+    var HTMLToDoElement: {
+        prototype: HTMLToDoElement;
+        new (): HTMLToDoElement;
+    };
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
-        "app-profile": HTMLAppProfileElement;
-        "app-root": HTMLAppRootElement;
+        "list-todo": HTMLListTodoElement;
         "my-button": HTMLMyButtonElement;
+        "to-do": HTMLToDoElement;
     }
 }
 declare namespace LocalJSX {
     interface AppHome {
     }
-    interface AppProfile {
-        "match"?: MatchResults;
-    }
-    interface AppRoot {
+    interface ListTodo {
+        "todos"?: Array<ITodo>;
     }
     interface MyButton {
         "text"?: string;
     }
+    interface ToDo {
+        "checked"?: boolean;
+        "todo"?: ITodo;
+    }
     interface IntrinsicElements {
         "app-home": AppHome;
-        "app-profile": AppProfile;
-        "app-root": AppRoot;
+        "list-todo": ListTodo;
         "my-button": MyButton;
+        "to-do": ToDo;
     }
 }
 export { LocalJSX as JSX };
@@ -73,9 +77,9 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-            "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
-            "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "list-todo": LocalJSX.ListTodo & JSXBase.HTMLAttributes<HTMLListTodoElement>;
             "my-button": LocalJSX.MyButton & JSXBase.HTMLAttributes<HTMLMyButtonElement>;
+            "to-do": LocalJSX.ToDo & JSXBase.HTMLAttributes<HTMLToDoElement>;
         }
     }
 }
