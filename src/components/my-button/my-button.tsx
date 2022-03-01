@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import { Component,EventEmitter, h, Host, Prop, State } from '@stencil/core';
 import { ITodo } from '../types';
+=======
+import { Component, h, Prop } from '@stencil/core';
+>>>>>>> Sou2
 
 @Component({
   tag: 'my-button',
@@ -8,6 +12,7 @@ import { ITodo } from '../types';
 })
 export class MyButton {
   @Prop() text: string;
+<<<<<<< HEAD
   // @State() count: number = 0;
   @State() todo: ITodo;
   // @State() todos: ITodo[]= [];
@@ -29,6 +34,8 @@ export class MyButton {
         console.log('clg de json 3 ', json);
       });
   }
+=======
+>>>>>>> Sou2
 
 //   changeTaskHandler(){
 //     // const event = this.changeTask.emit(todo);
@@ -44,6 +51,7 @@ export class MyButton {
 
   render() {
     return (
+<<<<<<< HEAD
       <Host>
         {/* <h1>{this.count}</h1> */}
         {/* <p > data to do : {this.todos.length ===0 ? 'loading ... ' : this.todos }</p> */}
@@ -68,6 +76,12 @@ export class MyButton {
 
         */}
       </Host>
+=======
+      <div class="row">
+        <input type="text" id="userInput" placeholder="add new item..." />
+        <button> add </button>
+      </div>
+>>>>>>> Sou2
     );
   }
 }
