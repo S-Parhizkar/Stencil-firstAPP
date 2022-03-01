@@ -2,16 +2,12 @@
   display: block;
 }
 
-<<<<<<< HEAD
-.btn {
-=======
 button {
->>>>>>> Sou2
   background-color: blue;
   border: transparent;
   border-radius: 0.25em;
   color: white;
-<<<<<<< HEAD
+
   font-size: 1.25em;
   margin: 0 0.25em;
   padding: 0.5em 1em;
@@ -25,11 +21,8 @@ span {
   color: var(--primary-70);
   font-weight: bold;
   font-size: 20px;
-}
-=======
-  font-size: 1em;
   margin: 0 0.25em;
-  height:30px;
+  height: 30px;
   padding: 0.2em 0.5em;
 }
 
@@ -37,13 +30,12 @@ button:disabled {
   opacity: 0.5;
 }
 
-input{
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	border: 1px solid #848484;
-	outline:0;
-	height:30px;
-	width: 80%;
- }
->>>>>>> Sou2
+input {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #848484;
+  outline: 0;
+  height: 30px;
+  width: 80%;
+}
