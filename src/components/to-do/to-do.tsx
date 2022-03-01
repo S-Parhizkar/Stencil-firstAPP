@@ -8,21 +8,24 @@ import { ITodo } from '../types';
 })
 export class ToDo {
   @Prop() todo: ITodo;
-  @Prop() checked: boolean;
 
   handleChange() {
-    return this.todoDone();
+    this.todo.completed = !this.todo.completed
+    fetch(this.todo.url, {
+    method: 'PUT',
+    body: JSON.stringify(this.todo)
+
+    });
   }
 
-  todoDone() {
-    this.todo.completed === true;
-    console.log('this.todo.completed', this.todo.completed);
-  }
+
+ 
+  
 
   render() {
     return (
       <div>
-        <div>Completed: {this.todo.completed === true ? 'YES' : 'NO'}</div>
+        <div>Completed: {this.todo.completed ? 'YES' : 'NO'}</div>
         <div>ID: {this.todo.id}</div>
         <div>Order: {this.todo.order}</div>
         <div>Title: {this.todo.title}</div>
@@ -31,7 +34,7 @@ export class ToDo {
         <form action="">
           <label>
             Check if completed:
-            <input type="checkbox" checked={this.checked} onClick={() => this.handleChange()} />
+            <input type="checkbox" checked={this.todo.completed} onClick={() => this.handleChange()} />
           </label>
         </form>
 

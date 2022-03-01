@@ -16,7 +16,6 @@ export namespace Components {
         "text": string;
     }
     interface ToDo {
-        "checked": boolean;
         "todo": ITodo;
     }
 }
@@ -62,7 +61,6 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface ToDo {
-        "checked"?: boolean;
         "todo"?: ITodo;
     }
     interface IntrinsicElements {
