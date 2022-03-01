@@ -61,6 +61,7 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface ToDo {
+        "onUpdate-todo"?: (event: CustomEvent<ITodo>) => void;
         "todo"?: ITodo;
     }
     interface IntrinsicElements {

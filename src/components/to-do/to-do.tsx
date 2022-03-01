@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 import { ITodo } from '../types';
 
 @Component({
@@ -9,18 +9,12 @@ import { ITodo } from '../types';
 export class ToDo {
   @Prop() todo: ITodo;
 
+  @Event({eventName: "update-todo"}) updateTodoHandler : EventEmitter<ITodo>;
+
   handleChange() {
-    this.todo.completed = !this.todo.completed
-    fetch(this.todo.url, {
-    method: 'PUT',
-    body: JSON.stringify(this.todo)
-
-    });
+      this.updateTodoHandler.emit(this.todo);
   }
-
-
  
-  
 
   render() {
     return (
