@@ -7,19 +7,26 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ITodo } from "./components/types";
 export namespace Components {
+    interface AddTodo {
+        "text": string;
+        "todo": ITodo;
+    }
     interface AppHome {
     }
     interface ListTodo {
         "todos": Array<ITodo>;
-    }
-    interface MyButton {
-        "text": string;
     }
     interface ToDo {
         "todo": ITodo;
     }
 }
 declare global {
+    interface HTMLAddTodoElement extends Components.AddTodo, HTMLStencilElement {
+    }
+    var HTMLAddTodoElement: {
+        prototype: HTMLAddTodoElement;
+        new (): HTMLAddTodoElement;
+    };
     interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
     }
     var HTMLAppHomeElement: {
@@ -32,12 +39,6 @@ declare global {
         prototype: HTMLListTodoElement;
         new (): HTMLListTodoElement;
     };
-    interface HTMLMyButtonElement extends Components.MyButton, HTMLStencilElement {
-    }
-    var HTMLMyButtonElement: {
-        prototype: HTMLMyButtonElement;
-        new (): HTMLMyButtonElement;
-    };
     interface HTMLToDoElement extends Components.ToDo, HTMLStencilElement {
     }
     var HTMLToDoElement: {
@@ -45,29 +46,31 @@ declare global {
         new (): HTMLToDoElement;
     };
     interface HTMLElementTagNameMap {
+        "add-todo": HTMLAddTodoElement;
         "app-home": HTMLAppHomeElement;
         "list-todo": HTMLListTodoElement;
-        "my-button": HTMLMyButtonElement;
         "to-do": HTMLToDoElement;
     }
 }
 declare namespace LocalJSX {
+    interface AddTodo {
+        "text"?: string;
+        "todo"?: ITodo;
+    }
     interface AppHome {
     }
     interface ListTodo {
         "todos"?: Array<ITodo>;
     }
-    interface MyButton {
-        "text"?: string;
-    }
     interface ToDo {
+        "onDelete-todo"?: (event: CustomEvent<ITodo>) => void;
         "onUpdate-todo"?: (event: CustomEvent<ITodo>) => void;
         "todo"?: ITodo;
     }
     interface IntrinsicElements {
+        "add-todo": AddTodo;
         "app-home": AppHome;
         "list-todo": ListTodo;
-        "my-button": MyButton;
         "to-do": ToDo;
     }
 }
@@ -75,9 +78,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "add-todo": LocalJSX.AddTodo & JSXBase.HTMLAttributes<HTMLAddTodoElement>;
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "list-todo": LocalJSX.ListTodo & JSXBase.HTMLAttributes<HTMLListTodoElement>;
-            "my-button": LocalJSX.MyButton & JSXBase.HTMLAttributes<HTMLMyButtonElement>;
             "to-do": LocalJSX.ToDo & JSXBase.HTMLAttributes<HTMLToDoElement>;
         }
     }

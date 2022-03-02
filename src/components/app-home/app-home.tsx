@@ -8,13 +8,14 @@ import { ITodo } from '../types';
 export class AppHome {
   @State() todos: Array<ITodo> = [];
 
+//Listener to update check box / API
   @Listen('update-todo')
   async updateTodoListner(event: CustomEvent<ITodo>) {
     const todo = event.detail;
     await this.updateToDo(todo);
     await this.loadTodoList();
   }
-
+//update check box / API
   async updateToDo(todo: ITodo) {
     todo.completed = !todo.completed;
     await fetch(todo.url, {
@@ -22,6 +23,24 @@ export class AppHome {
       body: JSON.stringify(todo),
     });
   }
+
+  //Listener to delete check box / API
+  @Listen('delete-todo')
+  async deleteToDoListner(event: CustomEvent<ITodo>) {
+    const todoDel = event.detail;
+  
+    await this.deleteToDo(todoDel);
+    await this.loadTodoList();
+  }
+//Delete to do / API
+async deleteToDo(todo: ITodo) {
+  await fetch(todo.url, {
+    method: 'DELETE',
+    })
+    .then(response => response.json()) 
+    .then(response => console.log(response))
+    .catch(err => console.log(err))
+}
 
   async loadTodoList() {
     await fetch('https://dm-tdb-01.azurewebsites.net/api/ToDo')
@@ -40,7 +59,7 @@ export class AppHome {
       <Host>
         <span> Les APIs 'TO DO':</span>
         <hr />
-        <my-button />
+        <add-todo />
         <hr />
         <list-todo todos={this.todos} />
         {/* <to-do/> */}

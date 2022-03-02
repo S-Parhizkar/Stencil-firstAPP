@@ -8,11 +8,16 @@ import { ITodo } from '../types';
 })
 export class ToDo {
   @Prop() todo: ITodo;
-
-  @Event({ eventName: 'update-todo' }) updateTodoHandler: EventEmitter<ITodo>;
-
+//Check box
+  @Event({ eventName: 'update-todo' }) updateTodoHandler:EventEmitter<ITodo>;
   handleChange() {
     this.updateTodoHandler.emit(this.todo);
+  }
+//Delete to do
+  @Event({ eventName: 'delete-todo' }) deleteTodoHandler:EventEmitter<ITodo>;
+  handleDelet() {
+    this.deleteTodoHandler.emit(this.todo);
+    console.log('test 22222')
   }
 
   render() {
@@ -24,13 +29,13 @@ export class ToDo {
         <div>Title: {this.todo.title}</div>
         <div>URL: {this.todo.url}</div>
 
-        <form action="">
+       
           <label>
             Check if completed:
             <input type="checkbox" checked={this.todo.completed} onClick={() => this.handleChange()} />
           </label>
-        </form>
-
+        
+   <button class="myButton" onClick={() => this.handleDelet()}> delete it </button>
         <hr />
       </div>
     );
