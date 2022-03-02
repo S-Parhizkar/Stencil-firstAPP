@@ -9,12 +9,11 @@ import { ITodo } from '../types';
 export class ToDo {
   @Prop() todo: ITodo;
 
-  @Event({eventName: "update-todo"}) updateTodoHandler : EventEmitter<ITodo>;
+  @Event({ eventName: 'update-todo' }) updateTodoHandler: EventEmitter<ITodo>;
 
   handleChange() {
-      this.updateTodoHandler.emit(this.todo);
+    this.updateTodoHandler.emit(this.todo);
   }
- 
 
   render() {
     return (

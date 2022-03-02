@@ -1,4 +1,4 @@
-import { Component,EventEmitter, h, Host, Prop, State } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 import { ITodo } from '../types';
 
 

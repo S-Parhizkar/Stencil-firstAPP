@@ -8,41 +8,35 @@ import { ITodo } from '../types';
 export class AppHome {
   @State() todos: Array<ITodo> = [];
 
-
-  @Listen("update-todo") 
-  async updateTodoListner(event: CustomEvent<ITodo>){
+  @Listen('update-todo')
+  async updateTodoListner(event: CustomEvent<ITodo>) {
     const todo = event.detail;
     await this.updateToDo(todo);
-    await this.loadTodoList()
+    await this.loadTodoList();
   }
 
   async updateToDo(todo: ITodo) {
-    todo.completed = !todo.completed
+    todo.completed = !todo.completed;
     await fetch(todo.url, {
-    method: 'PUT',
-    body: JSON.stringify(todo)
+      method: 'PUT',
+      body: JSON.stringify(todo),
     });
   }
 
-
- async loadTodoList(){
+  async loadTodoList() {
     await fetch('https://dm-tdb-01.azurewebsites.net/api/ToDo')
-    .then(response => response.json())
-    .then(json => {
-      this.todos = json;
-    });
-
+      .then(response => response.json())
+      .then(json => {
+        this.todos = json;
+      });
   }
-
 
   async componentWillLoad() {
-    this.loadTodoList()
+    this.loadTodoList();
   }
-
 
   render() {
     return (
-
       <Host>
         <span> Les APIs 'TO DO':</span>
         <hr />
@@ -51,8 +45,6 @@ export class AppHome {
         <list-todo todos={this.todos} />
         {/* <to-do/> */}
       </Host>
-
-
     );
   }
 }

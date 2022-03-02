@@ -5,15 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { MatchResults } from "@stencil/router";
-=======
 import { ITodo } from "./components/types";
->>>>>>> Sou2
-=======
-import { ITodo } from "./components/types";
->>>>>>> Sou2
 export namespace Components {
     interface AppHome {
     }
