@@ -15,7 +15,7 @@ export class ToDo {
   }
 //Delete to do
   @Event({ eventName: 'delete-todo' }) deleteTodoHandler:EventEmitter<ITodo>;
-  handleDelet() {
+  handleDelete() {
     this.deleteTodoHandler.emit(this.todo);
     console.log('test 22222')
   }
@@ -28,14 +28,13 @@ export class ToDo {
         <div>Order: {this.todo.order}</div>
         <div>Title: {this.todo.title}</div>
         <div>URL: {this.todo.url}</div>
-
-       
+               <br />
           <label>
             Check if completed:
             <input type="checkbox" checked={this.todo.completed} onClick={() => this.handleChange()} />
           </label>
         
-   <button class="myButton" onClick={() => this.handleDelet()}> delete it </button>
+   <button class="myButton" onClick={() => this.handleDelete()}> delete it </button>
         <hr />
       </div>
     );

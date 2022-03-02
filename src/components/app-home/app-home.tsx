@@ -11,8 +11,8 @@ export class AppHome {
 //Listener to update check box / API
   @Listen('update-todo')
   async updateTodoListner(event: CustomEvent<ITodo>) {
-    const todo = event.detail;
-    await this.updateToDo(todo);
+    const todoUp = event.detail;
+    await this.updateToDo(todoUp);
     await this.loadTodoList();
   }
 //update check box / API
@@ -23,6 +23,41 @@ export class AppHome {
       body: JSON.stringify(todo),
     });
   }
+
+  
+@State() value: string;
+
+//Listener to add More "to do" to API
+@Listen('addMore-todo')
+async postTodoListener(event: CustomEvent<ITodo>) {
+  const todoAdd = event.detail;
+  console.log('1-- test post from app-home')
+  await this.postToDo(todoAdd);
+  await this.loadTodoList();
+}
+//Post to add More "to do" to API
+async postToDo(todo: ITodo) {
+  // const data = this.value;
+  console.log('2-- test post from app-home', this.value)
+  await fetch(todo.url, {
+    method: 'POST',
+    body: JSON.stringify(
+
+      //TEST
+      {
+        id: 3333,
+        title: "get lunch",
+        completed: true,
+        order: 1,
+        url: "https://dm-tdb-01.azurewebsites.net/api/todo/1960"
+      }
+    ),
+  })
+  .then(response => console.log(response))
+    .catch(err => console.log(err))
+}
+
+
 
   //Listener to delete check box / API
   @Listen('delete-todo')
