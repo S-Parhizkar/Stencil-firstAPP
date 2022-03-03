@@ -19,7 +19,6 @@ export class ToDo {
   @Event({ eventName: 'delete-todo' }) deleteTodoHandler:EventEmitter<ITodo>;
   handleDelete() {
     this.deleteTodoHandler.emit(this.todo);
-    console.log('test 22222')
   }
 
   render() {

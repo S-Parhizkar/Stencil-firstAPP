@@ -80,18 +80,27 @@ async postToDo(todo: Partial<ITodo>) {
     .then(response => console.log(response))
     .catch(err => console.log(err))
 }
+
+
+// ********************* LOADING ***************
   async loadTodoList() {
+  // let highestOrder : number = Math.max(...this.todos.map((todo) => todo.order));
+
     await fetch('https://dm-tdb-01.azurewebsites.net/api/ToDo')
       .then(response => response.json())
       .then(json => {
-        this.todos = json;
+        this.todos= json;
+      });
+      this.todos.sort(function (firstEl: ITodo, secondEl:ITodo) {
+        return secondEl.order - firstEl.order;
       });
   }
 
-  // ********************* LOADING ***************
   async componentWillLoad() {
     this.loadTodoList();
   }
+
+  // ********************* RENDERING ***************
 
   render() {
     return (
