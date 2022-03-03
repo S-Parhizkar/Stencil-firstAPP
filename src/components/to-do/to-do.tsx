@@ -8,12 +8,14 @@ import { ITodo } from '../types';
 })
 export class ToDo {
   @Prop() todo: ITodo;
-//Check box
+
+//***** PUT /Check box ****
   @Event({ eventName: 'update-todo' }) updateTodoHandler:EventEmitter<ITodo>;
   handleChange() {
     this.updateTodoHandler.emit(this.todo);
   }
-//Delete to do
+
+//****** DELETE /Delete to do ****
   @Event({ eventName: 'delete-todo' }) deleteTodoHandler:EventEmitter<ITodo>;
   handleDelete() {
     this.deleteTodoHandler.emit(this.todo);

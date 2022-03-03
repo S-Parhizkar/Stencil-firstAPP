@@ -1,4 +1,4 @@
-import { Component, h, Prop,Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop,Event, EventEmitter, Element } from '@stencil/core';
 import { ITodo } from '../types';
 
 
@@ -10,15 +10,21 @@ import { ITodo } from '../types';
 export class AddTodo {
   @Prop() text: string;
   @Prop() todo: ITodo;
-  @Prop() value: ITodo;
- 
+  @Prop() value: string;
+  @Element() element: HTMLElement;
   
+  //  private textInput?: HTMLInputElement;
+
   //Post/add to do
   @Event({ eventName: 'addMore-todo' }) postTodoHandler:EventEmitter<ITodo>;
 
+
+
+
+
   handleAddToDo() {
 
-    //TEST 
+    //JUST A TEST 
     // this.value = {
     //   id: 3333,
     //   title: "get lunch",
@@ -26,15 +32,20 @@ export class AddTodo {
     //   order: 1,
     //   url: "https://dm-tdb-01.azurewebsites.net/api/todo/1960"
     // };
-    this.postTodoHandler.emit(this.todo);
-    console.log('3-- test add-todo side ', this.value);
+
+    // const inputValue = this.element.getElementsByClassName('inputTodo').value;
+
+    this.postTodoHandler.emit();
+    console.log('3- test add-todo side ');
   }
 
   render() {
     return (
 
   <div>
-          <input type="text"  placeholder='Enter new " to do "'  />
+          <input class={"inputTodo"} type="text"  placeholder='Enter new " to do "' 
+          // ref={el => this.textInput = el as HTMLInputElement} 
+          />
           <button onClick={() => this.handleAddToDo()}> add to do</button>
   </div>
      

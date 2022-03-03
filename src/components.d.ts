@@ -10,7 +10,7 @@ export namespace Components {
     interface AddTodo {
         "text": string;
         "todo": ITodo;
-        "value": ITodo;
+        "value": string;
     }
     interface AppHome {
     }
@@ -58,7 +58,7 @@ declare namespace LocalJSX {
         "onAddMore-todo"?: (event: CustomEvent<ITodo>) => void;
         "text"?: string;
         "todo"?: ITodo;
-        "value"?: ITodo;
+        "value"?: string;
     }
     interface AppHome {
     }

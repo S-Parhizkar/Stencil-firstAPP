@@ -1,4 +1,4 @@
-import { Component, h, State, Host, Listen } from '@stencil/core';
+import { Component, h, State, Host, Listen, Element } from '@stencil/core';
 import { ITodo } from '../types';
 
 @Component({
@@ -8,6 +8,7 @@ import { ITodo } from '../types';
 export class AppHome {
   @State() todos: Array<ITodo> = [];
 
+// ****************** PUT ***************
 //Listener to update check box / API
   @Listen('update-todo')
   async updateTodoListner(event: CustomEvent<ITodo>) {
@@ -24,25 +25,25 @@ export class AppHome {
     });
   }
 
-  
+// ******************* POST ***************
 @State() value: string;
+@Element() element;
 
 //Listener to add More "to do" to API
 @Listen('addMore-todo')
 async postTodoListener(event: CustomEvent<ITodo>) {
   const todoAdd = event.detail;
-  console.log('1-- test post from app-home')
+  console.log('1- test post from app-home')
   await this.postToDo(todoAdd);
   await this.loadTodoList();
 }
 //Post to add More "to do" to API
 async postToDo(todo: ITodo) {
-  // const data = this.value;
-  console.log('2-- test post from app-home', this.value)
+  const inputValue = this.element.getElementsByClassName('inputTodo').value;
+  console.log('2- test post from app-home', inputValue )
   await fetch(todo.url, {
     method: 'POST',
     body: JSON.stringify(
-
       //TEST
       {
         id: 3333,
@@ -57,8 +58,7 @@ async postToDo(todo: ITodo) {
     .catch(err => console.log(err))
 }
 
-
-
+// ********************* DELETE ***************
   //Listener to delete check box / API
   @Listen('delete-todo')
   async deleteToDoListner(event: CustomEvent<ITodo>) {
@@ -67,16 +67,15 @@ async postToDo(todo: ITodo) {
     await this.deleteToDo(todoDel);
     await this.loadTodoList();
   }
-//Delete to do / API
-async deleteToDo(todo: ITodo) {
-  await fetch(todo.url, {
+  //Delete to do / API
+  async deleteToDo(todo: ITodo) {
+    await fetch(todo.url, {
     method: 'DELETE',
     })
     .then(response => response.json()) 
     .then(response => console.log(response))
     .catch(err => console.log(err))
 }
-
   async loadTodoList() {
     await fetch('https://dm-tdb-01.azurewebsites.net/api/ToDo')
       .then(response => response.json())
@@ -85,6 +84,7 @@ async deleteToDo(todo: ITodo) {
       });
   }
 
+  // ********************* LOADING ***************
   async componentWillLoad() {
     this.loadTodoList();
   }
