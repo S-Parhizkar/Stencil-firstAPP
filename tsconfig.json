@@ -18,7 +18,7 @@
   },
   "include": [
     "src"
-  ],
+, "../aphome-copy.tsx"  ],
   "exclude": [
     "node_modules"
   ]

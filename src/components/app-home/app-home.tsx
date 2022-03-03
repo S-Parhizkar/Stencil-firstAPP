@@ -27,25 +27,36 @@ export class AppHome {
   }
 
 // ******************* POST ***************
-
 //Listener to add More "to do" to API
 @Listen('add-more')
 async postTodoListener(event: CustomEvent<string>) {
   const sentTitle = event.detail;
   console.log('1- test post from app-home', sentTitle)
-  await this.postToDo(sentTitle);
-  // await this.loadTodoList();
+
+  //** find all orders and filter all undefined */
+  // const allOrder = this.todos.map((todo) => todo.order);  //out :all orders
+  // const allNumOrder = allOrder.filter((x) => x !== undefined); 
+  // The same as below => 
+  const allNumOrder = this.todos
+    .map((todo) => todo.order)
+    .filter(x => x !== undefined);
+  //** find highest order */
+  let highestOrder : number = Math.max(...allNumOrder);
+//** initializing the order by adding 1 to highest order*/
+    const newTodo : Partial<ITodo> = {
+      title: sentTitle,
+      order: highestOrder + 1
+    };
+  await this.postToDo(newTodo);
+  await this.loadTodoList();
 }
+
 //Post to add More "to do" to API
-async postToDo(title: string) {
-  console.log('2- test post from app-home', title )
+async postToDo(todo: Partial<ITodo>) {
   const url = 'https://dm-tdb-01.azurewebsites.net/api/ToDo'
   await fetch(url, {    
     method: 'POST',
-    body: JSON.stringify({title} as ITodo),
-    // headers: {
-    //   "Content-Type" : "application/json"
-    // },
+    body: JSON.stringify(todo),
   })
   .then(response => console.log(response))
     .catch(err => console.log(err))
