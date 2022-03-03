@@ -1,10 +1,11 @@
-import { Component, h, State, Host, Listen, Element } from '@stencil/core';
+import { Component, h, State, Host, Listen } from '@stencil/core';
 import { ITodo } from '../types';
 
 @Component({
   tag: 'app-home',
   styleUrl: 'app-home.css',
 })
+
 export class AppHome {
   @State() todos: Array<ITodo> = [];
 
@@ -26,33 +27,25 @@ export class AppHome {
   }
 
 // ******************* POST ***************
-@State() value: string;
-@Element() element;
 
 //Listener to add More "to do" to API
-@Listen('addMore-todo')
-async postTodoListener(event: CustomEvent<ITodo>) {
-  const todoAdd = event.detail;
-  console.log('1- test post from app-home')
-  await this.postToDo(todoAdd);
-  await this.loadTodoList();
+@Listen('add-more')
+async postTodoListener(event: CustomEvent<string>) {
+  const sentTitle = event.detail;
+  console.log('1- test post from app-home', sentTitle)
+  await this.postToDo(sentTitle);
+  // await this.loadTodoList();
 }
 //Post to add More "to do" to API
-async postToDo(todo: ITodo) {
-  const inputValue = this.element.getElementsByClassName('inputTodo').value;
-  console.log('2- test post from app-home', inputValue )
-  await fetch(todo.url, {
+async postToDo(title: string) {
+  console.log('2- test post from app-home', title )
+  const url = 'https://dm-tdb-01.azurewebsites.net/api/ToDo'
+  await fetch(url, {    
     method: 'POST',
-    body: JSON.stringify(
-      //TEST
-      {
-        id: 3333,
-        title: "get lunch",
-        completed: true,
-        order: 1,
-        url: "https://dm-tdb-01.azurewebsites.net/api/todo/1960"
-      }
-    ),
+    body: JSON.stringify({title} as ITodo),
+    // headers: {
+    //   "Content-Type" : "application/json"
+    // },
   })
   .then(response => console.log(response))
     .catch(err => console.log(err))

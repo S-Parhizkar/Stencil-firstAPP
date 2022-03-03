@@ -8,9 +8,6 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ITodo } from "./components/types";
 export namespace Components {
     interface AddTodo {
-        "text": string;
-        "todo": ITodo;
-        "value": string;
     }
     interface AppHome {
     }
@@ -55,10 +52,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface AddTodo {
-        "onAddMore-todo"?: (event: CustomEvent<ITodo>) => void;
-        "text"?: string;
-        "todo"?: ITodo;
-        "value"?: string;
+        "onAdd-more"?: (event: CustomEvent<string>) => void;
     }
     interface AppHome {
     }
