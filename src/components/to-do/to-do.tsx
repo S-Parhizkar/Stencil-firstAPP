@@ -9,17 +9,19 @@ import { ITodo } from '../types';
 export class ToDo {
   @Prop() todo: ITodo;
 
-//***** PUT /Check box ****
-  @Event({ eventName: 'update-todo' }) updateTodoHandler:EventEmitter<ITodo>;
+  //***** PUT /Check box ****
+  @Event({ eventName: 'update-todo' }) updateTodoHandler: EventEmitter<ITodo>;
   handleChange() {
     this.updateTodoHandler.emit(this.todo);
   }
 
-//****** DELETE /Delete to do ****
-  @Event({ eventName: 'delete-todo' }) deleteTodoHandler:EventEmitter<ITodo>;
+  //****** DELETE /Delete to do ****
+  @Event({ eventName: 'delete-todo' }) deleteTodoHandler: EventEmitter<ITodo>;
   handleDelete() {
     this.deleteTodoHandler.emit(this.todo);
   }
+
+
 
   render() {
     return (
@@ -29,13 +31,17 @@ export class ToDo {
         <div>Order: {this.todo.order}</div>
         <div>Title: {this.todo.title}</div>
         <div>URL: {this.todo.url}</div>
-               <br />
-          <label>
-            Check if completed:
-            <input type="checkbox" checked={this.todo.completed} onClick={() => this.handleChange()} />
-          </label>
-        
-   <button class="myButton" onClick={() => this.handleDelete()}> delete it </button>
+        <br />
+        <label>
+          Check if completed:
+          <input type="checkbox" checked={this.todo.completed} onClick={() => this.handleChange()} />
+        </label>
+
+
+
+   
+        <button class="myButton" onClick={() => this.handleDelete()}>delete it{' '}
+        </button>
         <hr />
       </div>
     );

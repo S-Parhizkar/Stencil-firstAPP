@@ -16,9 +16,14 @@ export class AddTodo {
   handleAddToDo() {
     const inputValue = this.$textInput.value;
     this.sendTodoHandler.emit(inputValue);
-    console.log('3- test add-todo side ', inputValue);
-  }
 
+    console.log('3- test add-todo side ', inputValue);
+    this.emptyinputValue();
+  }
+  emptyinputValue(){
+    this.$textInput.value = "";
+  }
+  
   render() {
     return (
 

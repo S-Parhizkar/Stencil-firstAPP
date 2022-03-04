@@ -30,7 +30,7 @@ export class AppHome {
 //Listener to add More "to do" to API
 @Listen('add-more')
 async postTodoListener(event: CustomEvent<string>) {
-  const sentTitle = event.detail;
+  let sentTitle = event.detail;
   console.log('1- test post from app-home', sentTitle)
 
   //** find all orders and filter all undefined */
@@ -47,8 +47,20 @@ async postTodoListener(event: CustomEvent<string>) {
       title: sentTitle,
       order: highestOrder + 1
     };
-  await this.postToDo(newTodo);
+
+    const allTitles= this.todos
+  .map((todo) => todo.title)
+
+  for (var i = 0; i < allTitles.length ; i++){
+
+    if(sentTitle == allTitles[i]){
+    alert('This task has been already added..')
+  } else {
+    await this.postToDo(newTodo);
   await this.loadTodoList();
+  }
+  }
+  
 }
 
 //Post to add More "to do" to API
@@ -61,6 +73,15 @@ async postToDo(todo: Partial<ITodo>) {
   .then(response => console.log(response))
     .catch(err => console.log(err))
 }
+
+// checkOldValues(){
+//   const allTitles= this.todos
+//   .map((todo) => todo.title)
+//   if(this.sentTitle= allTitles){
+//     alert('This task has been already added..')
+
+//   }
+// }
 
 // ********************* DELETE ***************
   //Listener to delete check box / API
