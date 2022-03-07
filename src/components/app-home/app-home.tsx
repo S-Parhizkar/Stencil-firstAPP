@@ -26,6 +26,25 @@ export class AppHome {
     });
   }
 
+// ****************** Edit Title & Order / PUT ***************
+//Listener to update Edit Title & Order / API
+  @Listen('edit-todo')
+  async editTodoListner(event: CustomEvent<ITodo>) {
+    const todoEdit = event.detail;
+    console.log('1- test todo Edit', todoEdit);
+    await this.editToDo(todoEdit);
+    await this.loadTodoList();
+  }
+//edit Edit Title & Order / API
+  async editToDo(todo: ITodo) {
+    console.log('2- test todo Edit', todo.title );
+    // todo.title = ????
+    await fetch(todo.url, {
+      method: 'PUT',
+      body: JSON.stringify(todo),
+    });
+  }
+
 // ******************* POST ***************
 //Listener to add More "to do" to API
 @Listen('add-more')
@@ -33,10 +52,6 @@ async postTodoListener(event: CustomEvent<string>) {
   let sentTitle = event.detail;
   console.log('1- test post from app-home', sentTitle)
 
-  //** find all orders and filter all undefined */
-  // const allOrder = this.todos.map((todo) => todo.order);  //out :all orders
-  // const allNumOrder = allOrder.filter((x) => x !== undefined); 
-  // The same as below => 
   const allNumOrder = this.todos
     .map((todo) => todo.order)
     .filter(x => x !== undefined);
@@ -52,16 +67,15 @@ async postTodoListener(event: CustomEvent<string>) {
   .map((todo) => todo.title)
 
   for (var i = 0; i < allTitles.length ; i++){
-
     if(sentTitle == allTitles[i]){
-    alert('This task has been already added..')
+    alert('This task has been already added..');
+    return;
   } else {
-    await this.postToDo(newTodo);
+  await this.postToDo(newTodo);
   await this.loadTodoList();
   }
   }
-  
-}
+  }
 
 //Post to add More "to do" to API
 async postToDo(todo: Partial<ITodo>) {
@@ -74,14 +88,6 @@ async postToDo(todo: Partial<ITodo>) {
     .catch(err => console.log(err))
 }
 
-// checkOldValues(){
-//   const allTitles= this.todos
-//   .map((todo) => todo.title)
-//   if(this.sentTitle= allTitles){
-//     alert('This task has been already added..')
-
-//   }
-// }
 
 // ********************* DELETE ***************
   //Listener to delete check box / API
@@ -130,8 +136,10 @@ async postToDo(todo: Partial<ITodo>) {
         <hr />
         <add-todo />
         <hr />
+        <edit-todo/>  
+           <hr />
         <list-todo todos={this.todos} />
-        {/* <to-do/> */}
+
       </Host>
     );
   }

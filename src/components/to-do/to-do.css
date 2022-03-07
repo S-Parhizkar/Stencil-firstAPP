@@ -2,11 +2,10 @@
   display: block;
 }
 
-div{
+div {
   background: rgb(136, 221, 221);
   border-radius: 10px;
   padding: 10px 0 0 15px;
-  
 }
 label {
   font-family: system-ui, sans-serif;
@@ -30,7 +29,7 @@ label {
   padding: 9px 6px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #854629;
-  margin-left: 80%;
+  margin-left: 75%;
   margin-bottom: 10px;
 }
 .myButton:hover {
@@ -43,30 +42,21 @@ label {
 }
 
 
-/* Button used to open the contact form - fixed at the bottom of the page */
-.openButton {
-  box-shadow: inset 0px 1px 0px 0px #4159e2;
-  background: linear-gradient(to bottom, #102e7a 5%, #126bdf 100%);
-  background-color: rgb(85, 85, 85);
-  color: white;
-  font-family: Arial;
-  padding: 9px 6px;
-  text-shadow: 0px 1px 0px #2f2985;
-  border-radius: 3px;
-  border: 1px solid #113a94;
-  cursor: pointer;
-  opacity: 0.8;
-  /* position: fixed; */
-  bottom: 10px;
-  left: 10px;
-  width: 50px;
+/* 
+.modal{
+  display: block;
+  background: rgb(209, 126, 48);
 }
+.label{
 
-.openButton:hover {
-  background: linear-gradient(to bottom, #3773e2 5%, #021980 100%);
-  background-color: #082bf3;
 }
-.openButton:active {
-  position: relative;
-  top: 1px;
+.inputPop{
+  color: #d0451b;
+  margin: 0 0 10px 10px;
+  border-radius: 3px;
 }
+.btn{
+  justify-content: space-between;
+} */
+
+

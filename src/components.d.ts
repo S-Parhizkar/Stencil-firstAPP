@@ -11,6 +11,9 @@ export namespace Components {
     }
     interface AppHome {
     }
+    interface EditTodo {
+        "todo": ITodo;
+    }
     interface ListTodo {
         "todos": Array<ITodo>;
     }
@@ -31,6 +34,12 @@ declare global {
         prototype: HTMLAppHomeElement;
         new (): HTMLAppHomeElement;
     };
+    interface HTMLEditTodoElement extends Components.EditTodo, HTMLStencilElement {
+    }
+    var HTMLEditTodoElement: {
+        prototype: HTMLEditTodoElement;
+        new (): HTMLEditTodoElement;
+    };
     interface HTMLListTodoElement extends Components.ListTodo, HTMLStencilElement {
     }
     var HTMLListTodoElement: {
@@ -46,6 +55,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "add-todo": HTMLAddTodoElement;
         "app-home": HTMLAppHomeElement;
+        "edit-todo": HTMLEditTodoElement;
         "list-todo": HTMLListTodoElement;
         "to-do": HTMLToDoElement;
     }
@@ -55,6 +65,10 @@ declare namespace LocalJSX {
         "onAdd-more"?: (event: CustomEvent<string>) => void;
     }
     interface AppHome {
+    }
+    interface EditTodo {
+        "onEdit-todo"?: (event: CustomEvent<ITodo>) => void;
+        "todo"?: ITodo;
     }
     interface ListTodo {
         "todos"?: Array<ITodo>;
@@ -67,6 +81,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "add-todo": AddTodo;
         "app-home": AppHome;
+        "edit-todo": EditTodo;
         "list-todo": ListTodo;
         "to-do": ToDo;
     }
@@ -77,6 +92,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "add-todo": LocalJSX.AddTodo & JSXBase.HTMLAttributes<HTMLAddTodoElement>;
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
+            "edit-todo": LocalJSX.EditTodo & JSXBase.HTMLAttributes<HTMLEditTodoElement>;
             "list-todo": LocalJSX.ListTodo & JSXBase.HTMLAttributes<HTMLListTodoElement>;
             "to-do": LocalJSX.ToDo & JSXBase.HTMLAttributes<HTMLToDoElement>;
         }

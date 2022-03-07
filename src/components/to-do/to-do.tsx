@@ -7,7 +7,8 @@ import { ITodo } from '../types';
   shadow: true,
 })
 export class ToDo {
-  @Prop() todo: ITodo;
+   @Prop() todo: ITodo;
+ 
 
   //***** PUT /Check box ****
   @Event({ eventName: 'update-todo' }) updateTodoHandler: EventEmitter<ITodo>;
@@ -21,29 +22,27 @@ export class ToDo {
     this.deleteTodoHandler.emit(this.todo);
   }
 
+//******@@@@@@@@ EDIT /edit to do (popUP) @@@@@@@@****
 
 
-  render() {
-    return (
-      <div>
-        <div>Completed: {this.todo.completed ? 'YES' : 'NO'}</div>
-        <div>ID: {this.todo.id}</div>
-        <div>Order: {this.todo.order}</div>
-        <div>Title: {this.todo.title}</div>
-        <div>URL: {this.todo.url}</div>
-        <br />
-        <label>
-          Check if completed:
-          <input type="checkbox" checked={this.todo.completed} onClick={() => this.handleChange()} />
-        </label>
+render() {
+  return (
+    <div>
+      <div>Completed: {this.todo.completed ? 'YES' : 'NO'}</div>
+      <div>ID: {this.todo.id}</div>
+      <div>Order: {this.todo.order}</div>
+      <div>Title: {this.todo.title}</div>
+      <div>URL: {this.todo.url}</div>
+      <br />
+      <label>
+        Check if completed:
+        <input type="checkbox" checked={this.todo.completed} onClick={() => this.handleChange()} />
+      </label>
 
-
-
-   
-        <button class="myButton" onClick={() => this.handleDelete()}>delete it{' '}
-        </button>
-        <hr />
-      </div>
-    );
-  }
+      <button class="myButton" onClick={() => this.handleDelete()}>delete it{' '}
+      </button>
+      <hr />
+    </div>
+  );
+}
 }
