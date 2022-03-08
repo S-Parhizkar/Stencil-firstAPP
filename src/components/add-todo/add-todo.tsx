@@ -28,7 +28,7 @@ export class AddTodo {
     return (
 
   <div>
-          <input class={"inputTodo"} type="text"  placeholder='Enter new " to do "' 
+          <input class={"inputTodo"} type="text"  placeholder='Add your new " to do " to this list' 
           ref={el => this.$textInput = el as HTMLInputElement} 
           />
           <button onClick={() => this.handleAddToDo()}> add to do</button>

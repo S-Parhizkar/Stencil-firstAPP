@@ -45,7 +45,7 @@ export class EditTodo {
           <input
             class="inputPop"
             type="text"
-            placeholder="Enter the new Title"
+            placeholder="can change TITLE "
             name="title"
             required
             value={this.todo?.title}
@@ -58,7 +58,7 @@ export class EditTodo {
           <input
             class="inputPop"
             type="number"
-            placeholder="Enter the new order"
+            placeholder="can change ORDER"
             name="order"
             required
             value={this.todo?.order}
