@@ -9,7 +9,6 @@ import { ITodo } from '../types';
 export class EditTodo {
   @Prop() todo: ITodo;
 
-
   //Listener to update Edit Title & Order / API
   // @Listen('todo-to-update')
   //  async RecievEditTodoListner(event: CustomEvent<ITodo>) {
@@ -43,7 +42,6 @@ export class EditTodo {
   }
 
 
-
   render() {
     return (
       <div class="modal">
@@ -60,7 +58,7 @@ export class EditTodo {
             placeholder="Enter the new Title"
             name="title"
             required
-            // value={this.todo.title}
+            value={this.todo?.title}
             ref={el => (this.$textInputEditTitle = el as HTMLInputElement)}
           />
           <br />
@@ -73,7 +71,7 @@ export class EditTodo {
             placeholder="Enter the new order"
             name="order"
             required
-            // value={this.todo.order}
+            value={this.todo?.order}
             ref={el => (this.$textInputEditOrder = el as HTMLInputElement)}
           />
 

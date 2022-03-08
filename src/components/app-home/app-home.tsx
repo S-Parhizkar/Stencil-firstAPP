@@ -6,10 +6,9 @@ import { ITodo } from '../types';
   styleUrl: 'app-home.css',
 })
 
-
 export class AppHome {
   @State() todos: Array<ITodo> = [];
-
+@State() totoBeenEdited: ITodo
   // ****************@@ Check / PUT @@*************
   //Listener to update check box / API
   @Listen('update-todo')
@@ -32,11 +31,10 @@ export class AppHome {
    //Listener to update Edit Title & Order / API
    @Listen('todo-to-update')
    async RecievEditTodoListner(event: CustomEvent<ITodo>) {
-     const todoToUpdate= event.detail;
-     console.log('4: test receive todo Edit', todoToUpdate);
-     await this.editToDo(todoToUpdate);
+     this.totoBeenEdited= event.detail;
+     console.log('4: test receive todo Edit', );
+    //  await this.editToDo(totoBeenEdited);
    }
-
  //_____________________________________________
 
   //Listener to update Edit Title & Order / API
@@ -49,8 +47,7 @@ export class AppHome {
   }
   //edit Edit Title & Order / API
   async editToDo(todo: ITodo) {
-    console.log('2: test todo Edit', todo.title, todo.order);
-    // todo.title = ????
+    console.log('2: test todo Edit', todo.title, todo.order, 'url: ',todo.url);
     await fetch(todo.url, {
       method: 'PUT',
       body: JSON.stringify(todo),
@@ -144,7 +141,7 @@ export class AppHome {
         <hr />
         <add-todo />
         <hr />
-        <edit-todo />
+        <edit-todo todo={this.totoBeenEdited} />
         <hr />
         <list-todo todos={this.todos} />
       </Host>
