@@ -41,22 +41,23 @@ label {
   top: 1px;
 }
 
-
-/* 
-.modal{
-  display: block;
-  background: rgb(209, 126, 48);
+.editbtn{
+  box-shadow: inset 0px 1px 0px 0px #77eb94;
+  background: linear-gradient(to bottom, #2bdb48 5%, #02640f 50%);
+  background-color: #0aee3b;
+    border-radius: 3px;
+    border: 1px solid #6b1805;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 13px;
+    padding: 9px 6px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #854629;
+    margin-top: 5px;
 }
-.label{
-
+.editbtn:hover {
+  background: linear-gradient(to bottom, #066f3a 5%, #2acc2a 100%);
+  background-color: #0aa74b;
 }
-.inputPop{
-  color: #d0451b;
-  margin: 0 0 10px 10px;
-  border-radius: 3px;
-}
-.btn{
-  justify-content: space-between;
-} */
-
-

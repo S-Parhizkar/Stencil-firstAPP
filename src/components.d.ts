@@ -67,7 +67,7 @@ declare namespace LocalJSX {
     interface AppHome {
     }
     interface EditTodo {
-        "onEdit-todo"?: (event: CustomEvent<ITodo>) => void;
+        "onEdit-onetodo"?: (event: CustomEvent<ITodo>) => void;
         "todo"?: ITodo;
     }
     interface ListTodo {
@@ -75,6 +75,7 @@ declare namespace LocalJSX {
     }
     interface ToDo {
         "onDelete-todo"?: (event: CustomEvent<ITodo>) => void;
+        "onTodo-to-update"?: (event: CustomEvent<ITodo>) => void;
         "onUpdate-todo"?: (event: CustomEvent<ITodo>) => void;
         "todo"?: ITodo;
     }

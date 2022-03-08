@@ -16,13 +16,20 @@ export class ToDo {
     this.updateTodoHandler.emit(this.todo);
   }
 
+    //***** Edit request todo-to-update ****
+  @Event({ eventName: 'todo-to-update' }) sendEditTodoHandler: EventEmitter<ITodo>;
+  handleTodoToUpdate() {
+    this.sendEditTodoHandler.emit(this.todo);
+    console.log('todo-to-update :', this.todo.url)
+  }
+
   //****** DELETE /Delete to do ****
   @Event({ eventName: 'delete-todo' }) deleteTodoHandler: EventEmitter<ITodo>;
   handleDelete() {
     this.deleteTodoHandler.emit(this.todo);
   }
 
-//******@@@@@@@@ EDIT /edit to do (popUP) @@@@@@@@****
+
 
 
 render() {
@@ -38,8 +45,11 @@ render() {
         Check if completed:
         <input type="checkbox" checked={this.todo.completed} onClick={() => this.handleChange()} />
       </label>
+<hr />
+      <button class="editbtn" onClick={() => this.handleTodoToUpdate()}>Edit
+      </button>
 
-      <button class="myButton" onClick={() => this.handleDelete()}>delete it{' '}
+      <button class="myButton" onClick={() => this.handleDelete()}>delete it
       </button>
       <hr />
     </div>

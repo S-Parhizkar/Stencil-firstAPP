@@ -6,18 +6,19 @@ import { ITodo } from '../types';
   styleUrl: 'app-home.css',
 })
 
+
 export class AppHome {
   @State() todos: Array<ITodo> = [];
 
-// ****************** PUT ***************
-//Listener to update check box / API
+  // ****************@@ Check / PUT @@*************
+  //Listener to update check box / API
   @Listen('update-todo')
   async updateTodoListner(event: CustomEvent<ITodo>) {
     const todoUp = event.detail;
     await this.updateToDo(todoUp);
     await this.loadTodoList();
   }
-//update check box / API
+  //update check box / API
   async updateToDo(todo: ITodo) {
     todo.completed = !todo.completed;
     await fetch(todo.url, {
@@ -26,18 +27,29 @@ export class AppHome {
     });
   }
 
-// ****************** Edit Title & Order / PUT ***************
-//Listener to update Edit Title & Order / API
-  @Listen('edit-todo')
+  // ****************@@ Edit Title & Order / PUT @@*************
+
+   //Listener to update Edit Title & Order / API
+   @Listen('todo-to-update')
+   async RecievEditTodoListner(event: CustomEvent<ITodo>) {
+     const todoToUpdate= event.detail;
+     console.log('4: test receive todo Edit', todoToUpdate);
+     await this.editToDo(todoToUpdate);
+   }
+
+ //_____________________________________________
+
+  //Listener to update Edit Title & Order / API
+  @Listen('edit-onetodo')
   async editTodoListner(event: CustomEvent<ITodo>) {
     const todoEdit = event.detail;
-    console.log('1- test todo Edit', todoEdit);
+    console.log('1: test todo Edit', todoEdit);
     await this.editToDo(todoEdit);
     await this.loadTodoList();
   }
-//edit Edit Title & Order / API
+  //edit Edit Title & Order / API
   async editToDo(todo: ITodo) {
-    console.log('2- test todo Edit', todo.title );
+    console.log('2: test todo Edit', todo.title, todo.order);
     // todo.title = ????
     await fetch(todo.url, {
       method: 'PUT',
@@ -45,82 +57,78 @@ export class AppHome {
     });
   }
 
-// ******************* POST ***************
-//Listener to add More "to do" to API
-@Listen('add-more')
-async postTodoListener(event: CustomEvent<string>) {
-  let sentTitle = event.detail;
-  console.log('1- test post from app-home', sentTitle)
+  // ****************@@ POST @@*************
+  //Listener to add More "to do" to API
+  @Listen('add-more')
+  async postTodoListener(event: CustomEvent<string>) {
+    let sentTitle = event.detail;
+    console.log('1- test post from app-home', sentTitle);
 
-  const allNumOrder = this.todos
-    .map((todo) => todo.order)
-    .filter(x => x !== undefined);
-  //** find highest order */
-  let highestOrder : number = Math.max(...allNumOrder);
-//** initializing the order by adding 1 to highest order*/
-    const newTodo : Partial<ITodo> = {
+    const allNumOrder = this.todos.map(todo => todo.order).filter(x => x !== undefined);
+    //** find highest order */
+    let highestOrder: number = Math.max(...allNumOrder);
+    //** initializing the order by adding 1 to highest order*/
+    const newTodo: Partial<ITodo> = {
       title: sentTitle,
-      order: highestOrder + 1
+      order: highestOrder + 1,
     };
 
-    const allTitles= this.todos
-  .map((todo) => todo.title)
+    const allTitles = this.todos.map(todo => todo.title);
 
-  for (var i = 0; i < allTitles.length ; i++){
-    if(sentTitle == allTitles[i]){
-    alert('This task has been already added..');
-    return;
-  } else {
-  await this.postToDo(newTodo);
-  await this.loadTodoList();
+    for (var i = 0; i < allTitles.length; i++) {
+      if (sentTitle == allTitles[i]) {
+        alert('This task has been already added..');
+        return;
+      } else {
+        await this.postToDo(newTodo);
+        await this.loadTodoList();
+      }
+      return;
+    }
   }
+
+  //Post to add More "to do" to API
+  async postToDo(todo: Partial<ITodo>) {
+    const url = 'https://dm-tdb-01.azurewebsites.net/api/ToDo';
+    await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(todo),
+    })
+      .then(response => console.log(response))
+      .catch(err => console.log(err));
   }
-  }
 
-//Post to add More "to do" to API
-async postToDo(todo: Partial<ITodo>) {
-  const url = 'https://dm-tdb-01.azurewebsites.net/api/ToDo'
-  await fetch(url, {    
-    method: 'POST',
-    body: JSON.stringify(todo),
-  })
-  .then(response => console.log(response))
-    .catch(err => console.log(err))
-}
-
-
-// ********************* DELETE ***************
+  // *******************@@ DELETE @@*************
   //Listener to delete check box / API
   @Listen('delete-todo')
   async deleteToDoListner(event: CustomEvent<ITodo>) {
     const todoDel = event.detail;
-  
+
     await this.deleteToDo(todoDel);
     await this.loadTodoList();
   }
   //Delete to do / API
   async deleteToDo(todo: ITodo) {
     await fetch(todo.url, {
-    method: 'DELETE',
+      method: 'DELETE',
     })
-    .then(response => response.json()) 
-    .then(response => console.log(response))
-    .catch(err => console.log(err))
-}
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(err => console.log(err));
+  }
 
-
-// ********************* LOADING ***************
+  // ******************@@ LOADING @@*************
   async loadTodoList() {
-  // let highestOrder : number = Math.max(...this.todos.map((todo) => todo.order));
+    // let highestOrder : number = Math.max(...this.todos.map((todo) => todo.order));
 
     await fetch('https://dm-tdb-01.azurewebsites.net/api/ToDo')
       .then(response => response.json())
       .then(json => {
-        this.todos= json;
+        this.todos = json;
       });
-      this.todos.sort(function (firstEl: ITodo, secondEl:ITodo) {
-        return secondEl.order - firstEl.order;
-      });
+    this.todos.sort(function (firstEl: ITodo, secondEl: ITodo) {
+      return secondEl.order - firstEl.order;
+    });
   }
 
   async componentWillLoad() {
@@ -136,10 +144,9 @@ async postToDo(todo: Partial<ITodo>) {
         <hr />
         <add-todo />
         <hr />
-        <edit-todo/>  
-           <hr />
+        <edit-todo />
+        <hr />
         <list-todo todos={this.todos} />
-
       </Host>
     );
   }
