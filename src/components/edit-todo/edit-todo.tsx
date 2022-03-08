@@ -9,19 +9,9 @@ import { ITodo } from '../types';
 export class EditTodo {
   @Prop() todo: ITodo;
 
-  //Listener to update Edit Title & Order / API
-  // @Listen('todo-to-update')
-  //  async RecievEditTodoListner(event: CustomEvent<ITodo>) {
-  //    const todoToUpdate= event.detail;
-  //    console.log('4- test receive todo Edit', todoToUpdate);
-  //    await this.handleEditTodo(todoToUpdate);
-  //    console.log('5-send-edit :', todoToUpdate)
-  //  }
-//____________________________________________________
-
   private $textInputEditTitle?: HTMLInputElement;
   private $textInputEditOrder?: HTMLInputElement;
-  @Event({ eventName: 'edit-onetodo' }) editTodoHandler: EventEmitter<ITodo>;
+  @Event({ eventName: 'todo-to-edit' }) editTodoHandler: EventEmitter<ITodo>;
 
   handleEditTodo(todo: ITodo) {
     const title = this.$textInputEditTitle.value;
@@ -32,14 +22,14 @@ export class EditTodo {
       order,
     };
     this.editTodoHandler.emit(newTodo);
-    console.log('3- test edit Input','todot:',this.todo, 'Title:' ,title,  'Order:',order);
-    this.emptyeditInputValue();
+    console.log('3- test edit Input','todot:', todo, 'Title:' ,title,  'Order:',order);
+    // this.emptyeditInputValue();
   }
   // Empty input
-  emptyeditInputValue() {
-    this.$textInputEditTitle.value = '';
-    this.$textInputEditOrder.value = '';
-  }
+  // emptyeditInputValue() {
+  //   this.$textInputEditTitle.value = '';
+  //   this.$textInputEditOrder.value = '';
+  // }
 
 
   render() {

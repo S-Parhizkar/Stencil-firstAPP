@@ -8,7 +8,7 @@ import { ITodo } from '../types';
 
 export class AppHome {
   @State() todos: Array<ITodo> = [];
-@State() totoBeenEdited: ITodo
+  @State() totoBeenEdited: ITodo
   // ****************@@ Check / PUT @@*************
   //Listener to update check box / API
   @Listen('update-todo')
@@ -35,10 +35,8 @@ export class AppHome {
      console.log('4: test receive todo Edit', );
     //  await this.editToDo(totoBeenEdited);
    }
- //_____________________________________________
-
   //Listener to update Edit Title & Order / API
-  @Listen('edit-onetodo')
+  @Listen('todo-to-edit')
   async editTodoListner(event: CustomEvent<ITodo>) {
     const todoEdit = event.detail;
     console.log('1: test todo Edit', todoEdit);
@@ -55,6 +53,7 @@ export class AppHome {
   }
 
   // ****************@@ POST @@*************
+  
   //Listener to add More "to do" to API
   @Listen('add-more')
   async postTodoListener(event: CustomEvent<string>) {
@@ -116,8 +115,6 @@ export class AppHome {
 
   // ******************@@ LOADING @@*************
   async loadTodoList() {
-    // let highestOrder : number = Math.max(...this.todos.map((todo) => todo.order));
-
     await fetch('https://dm-tdb-01.azurewebsites.net/api/ToDo')
       .then(response => response.json())
       .then(json => {
