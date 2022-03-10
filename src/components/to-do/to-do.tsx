@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, } from '@stencil/core';
 import { ITodo } from '../types';
 
 @Component({
@@ -8,7 +8,6 @@ import { ITodo } from '../types';
 })
 export class ToDo {
    @Prop() todo: ITodo;
- 
 
   //***** PUT /Check box ****
   @Event({ eventName: 'update-todo' }) updateTodoHandler: EventEmitter<ITodo>;
@@ -18,9 +17,9 @@ export class ToDo {
 
     //***** Edit request todo-to-update ****
   @Event({ eventName: 'todo-to-update' }) sendEditTodoHandler: EventEmitter<ITodo>;
+  
   handleTodoToUpdate() {
     this.sendEditTodoHandler.emit(this.todo);
-    console.log('todo-to-update :', this.todo.url)
   }
 
   //****** DELETE /Delete to do ****

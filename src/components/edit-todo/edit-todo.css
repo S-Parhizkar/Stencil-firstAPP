@@ -4,7 +4,9 @@
 .body{
   margin: 0 15px;
   height: auto;
+  
 }
+
 
 .modal{
   display: block;
@@ -12,12 +14,13 @@
   padding: 10px;
   border-radius: 10px;
   overflow:hidden;
+ 
 }
+
+
 .label{
   color: #4d1403;
   font-size: 15px;
-  
- 
 }
 .inputPop{
   color: #c03e1e;
@@ -36,10 +39,10 @@
     color: #ffffff;
     font-family: Arial;
     font-size: 13px;
-    padding: 9px 10px;
+    padding: 5px 5px;
     text-decoration: none;
     text-shadow: 0px 1px 0px #854629;
-    margin-left: 80%;
+    margin-left: 90%;
 
 }
 .confirm:hover {
@@ -48,6 +51,6 @@
 }
 
 
-h3 {
+h3,h5 {
  margin: 0;
 }

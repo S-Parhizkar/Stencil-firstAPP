@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Listen, State } from '@stencil/core';
 import { ITodo } from '../types';
 
 @Component({
@@ -8,7 +8,7 @@ import { ITodo } from '../types';
 })
 export class EditTodo {
   @Prop() todo: ITodo;
-
+ 
   private $textInputEditTitle?: HTMLInputElement;
   private $textInputEditOrder?: HTMLInputElement;
   @Event({ eventName: 'todo-to-edit' }) editTodoHandler: EventEmitter<ITodo>;
@@ -21,8 +21,8 @@ export class EditTodo {
       title,
       order,
     };
-    this.editTodoHandler.emit(newTodo);
-    console.log('3- test edit Input','todot:', todo, 'Title:' ,title,  'Order:',order);
+    this.editTodoHandler.emit(newTodo );
+    console.log(todo)
     // this.emptyeditInputValue();
   }
   // Empty input
@@ -34,16 +34,16 @@ export class EditTodo {
 
   render() {
     return (
-      <div class="modal">
+      <div class= 'modal'>
         <h3>You can edit your 'to do's content from here: </h3>
 
         <hr />
-        <div class="body">
+        <div class='body'>
           <label class="label">
-            <b>New Title :</b>
+            <b>Replace your target 'to do's Title :</b>
           </label>
           <input
-            class="inputPop"
+            class='inputPop'
             type="text"
             placeholder="can change TITLE "
             name="title"
@@ -53,10 +53,10 @@ export class EditTodo {
           />
           <br />
           <label class="label">
-            <b>New order :</b>
+            <b>Replace your target 'to do's order :</b>
           </label>
           <input
-            class="inputPop"
+            class='inputPop'
             type="number"
             placeholder="can change ORDER"
             name="order"
@@ -64,8 +64,9 @@ export class EditTodo {
             value={this.todo?.order}
             ref={el => (this.$textInputEditOrder = el as HTMLInputElement)}
           />
+          <h5> ID : {this.todo.id}</h5>
 
-          <button type="submit" class="confirm" onClick={() => this.handleEditTodo(this.todo)}>
+          <button type="submit" class='confirm' onClick={() => this.handleEditTodo(this.todo)}>
             Confirm
           </button>
         </div>

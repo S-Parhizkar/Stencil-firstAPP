@@ -9,6 +9,7 @@ import { ITodo } from '../types';
 export class AppHome {
   @State() todos: Array<ITodo> = [];
   @State() totoBeenEdited: ITodo
+  
   // ****************@@ Check / PUT @@*************
   //Listener to update check box / API
   @Listen('update-todo')
@@ -32,13 +33,14 @@ export class AppHome {
    @Listen('todo-to-update')
    async RecievEditTodoListner(event: CustomEvent<ITodo>) {
      this.totoBeenEdited= event.detail;
-     console.log('4: test receive todo Edit', );
+     console.log('4: test receive totoBeenEdited',this.totoBeenEdited);
     //  await this.editToDo(totoBeenEdited);
    }
   //Listener to update Edit Title & Order / API
   @Listen('todo-to-edit')
   async editTodoListner(event: CustomEvent<ITodo>) {
     const todoEdit = event.detail;
+  
     console.log('1: test todo Edit', todoEdit);
     await this.editToDo(todoEdit);
     await this.loadTodoList();
@@ -138,7 +140,7 @@ export class AppHome {
         <hr />
         <add-todo />
         <hr />
-        <edit-todo todo={this.totoBeenEdited} />
+        { Boolean(this.totoBeenEdited) && <edit-todo todo={this.totoBeenEdited} />}
         <hr />
         <list-todo todos={this.todos} />
       </Host>
