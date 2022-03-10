@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter, Listen, State } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 import { ITodo } from '../types';
 
 @Component({
@@ -38,6 +38,7 @@ export class EditTodo {
         <h3>You can edit your 'to do's content from here: </h3>
 
         <hr />
+        {/* <div class={this.showForm ? 'bodyVis' : 'body'}> */}
         <div class='body'>
           <label class="label">
             <b>Replace your target 'to do's Title :</b>

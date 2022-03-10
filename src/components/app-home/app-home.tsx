@@ -26,6 +26,11 @@ export class AppHome {
       body: JSON.stringify(todo),
     });
   }
+// _____________change totoBeenEdited ____
+
+async changeBooleanTotoBeenEdited(){
+  this.totoBeenEdited = null;
+}
 
   // ****************@@ Edit Title & Order / PUT @@*************
 
@@ -44,6 +49,7 @@ export class AppHome {
     console.log('1: test todo Edit', todoEdit);
     await this.editToDo(todoEdit);
     await this.loadTodoList();
+     await this.changeBooleanTotoBeenEdited();
   }
   //edit Edit Title & Order / API
   async editToDo(todo: ITodo) {
@@ -104,6 +110,7 @@ export class AppHome {
 
     await this.deleteToDo(todoDel);
     await this.loadTodoList();
+    await this.changeBooleanTotoBeenEdited();
   }
   //Delete to do / API
   async deleteToDo(todo: ITodo) {
@@ -140,7 +147,7 @@ export class AppHome {
         <hr />
         <add-todo />
         <hr />
-        { Boolean(this.totoBeenEdited) && <edit-todo todo={this.totoBeenEdited} />}
+        {Boolean(this.totoBeenEdited) && <edit-todo todo={this.totoBeenEdited} />}
         <hr />
         <list-todo todos={this.todos} />
       </Host>
