@@ -19,7 +19,7 @@ body {
 
 app-home{
   padding: 10px ;
-  background: #bcebe5;
+  background: #EB593C;
   width:80%;
   height: auto;
   position: absolute;
@@ -30,15 +30,5 @@ app-home{
   height: auto;
   overflow: auto;
 }
-@media (max-width: 600px) {
-  app-home{
-    width: 100%;
-    bottom: 0;
-    transform: translate(-50%, 100%);
-    opacity: 1;
-  }
-  /* .is-open .modal {
-    transform: translate(-50%, 0);
-  } */
-}
+
 

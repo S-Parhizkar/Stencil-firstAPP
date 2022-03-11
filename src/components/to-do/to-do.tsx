@@ -33,7 +33,7 @@ export class ToDo {
 
 render() {
   return (
-    <div>
+    <div class='divTodo'>
       <div><span>TITLE:</span> {this.todo.title}</div>
       <div><span>ID:</span> {this.todo.id}</div>
       <div><span>Is completed? : </span> {this.todo.completed ? 'YES' : 'NO'}</div>
@@ -48,9 +48,8 @@ render() {
       <button class="editbtn" onClick={() => this.handleTodoToUpdate()}>Edit
       </button>
 
-      <button class="myButton" onClick={() => this.handleDelete()}>delete it
+      <button class="delete" onClick={() => this.handleDelete()}>delete it
       </button>
-      <hr />
     </div>
   );
 }

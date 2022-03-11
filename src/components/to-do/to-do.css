@@ -3,9 +3,10 @@
 }
 
 div {
-  background: rgb(136, 221, 221);
+  background:#ABDCD6;
   border-radius: 10px;
   padding: 10px 0 0 15px;
+  margin-bottom: 10px;
 }
 label {
   font-family: system-ui, sans-serif;
@@ -18,12 +19,12 @@ span{
   color: #EB593C;
   font-weight: bold;
 }
-.myButton {
-  box-shadow: inset 0px 1px 0px 0px #eb7b77;
-    background: linear-gradient(to bottom, #db312b 5%, #b11004 50%);
-  background-color: #d0451b;
-  border-radius: 3px;
-  border: 1px solid #942911;
+.delete {
+  box-shadow: inset 0px 1px 0px 0px #EB593C;
+    background: linear-gradient(to bottom, #EB593C 5%, #a8260c 50%);
+  background-color: #EB593C;
+  border-radius: 15px;
+  border: 1px solid #942913;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
@@ -36,11 +37,11 @@ span{
   margin-bottom: 10px;
   width: 60px;
 }
-.myButton:hover {
-  background: linear-gradient(to bottom, #6f0906 5%, #cc352a 100%);
-  background-color: #a7140a;
+.delete:hover {
+  box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+  transform: scale(1.05);
 }
-.myButton:active {
+.delete:active {
   position: relative;
   top: 1px;
 }
@@ -49,7 +50,7 @@ span{
   box-shadow: inset 0px 1px 0px 0px #77eb94;
   background: linear-gradient(to bottom, #2bdb48 5%, #02640f 50%);
   background-color: #0aee3b;
-    border-radius: 3px;
+    border-radius: 15px;
     border: 1px solid #6b1805;
     display: inline-block;
     cursor: pointer;
@@ -63,6 +64,6 @@ span{
     width: 60px;
 }
 .editbtn:hover {
-  background: linear-gradient(to bottom, #066f3a 5%, #2acc2a 100%);
-  background-color: #0aa74b;
+   box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+  transform: scale(1.05);
 }

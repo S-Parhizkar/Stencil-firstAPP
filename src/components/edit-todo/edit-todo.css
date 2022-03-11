@@ -10,7 +10,7 @@
 
 .modal{
   display: block;
-  background: rgb(60 221 239);
+  background: #FFFCEC;
   padding: 10px;
   border-radius: 10px;
   overflow:hidden;
@@ -36,7 +36,7 @@ span{
     box-shadow: inset 0px 1px 0px 0px #77eb94;
     background: linear-gradient(to bottom, #2bdb48 5%, #02640f 50%);
     background-color: #0aee3b;
-    border-radius: 3px;
+    border-radius: 15px;
     border: 1px solid #013f1d;
     display: inline-block;
     cursor: pointer;
@@ -51,14 +51,14 @@ span{
 
 }
 .confirm:hover {
-  background: linear-gradient(to bottom, #066f3a 5%, #2acc2a 100%);
-  background-color: #0aa74b;
+  box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+  transform: scale(1.05);
 }
 .cancel{
     box-shadow: inset 0px 1px 0px 0px #eb7b77;
-    background: linear-gradient(to bottom, #db312b 5%, #910d03 50%);
+    background: linear-gradient(to bottom, #EB593C 5%, #a8260c 50%);
     background-color: #ee380a;
-    border-radius: 3px;
+    border-radius: 15px;
     border: 1px solid #013f1d;
     display: inline-block;
     cursor: pointer;
@@ -73,8 +73,8 @@ span{
 
 }
 .cancel:hover {
-  background: linear-gradient(to bottom, #6f0906 5%, #cc352a 100%);
-  background-color: #a7140a;
+  box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+  transform: scale(1.05);
 }
 
 
