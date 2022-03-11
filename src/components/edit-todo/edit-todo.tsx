@@ -22,23 +22,22 @@ export class EditTodo {
       order,
     };
     this.editTodoHandler.emit(newTodo );
-    console.log(todo)
-    // this.emptyeditInputValue();
+    console.log('Confirm' ,todo)
   }
-  // Empty input
-  // emptyeditInputValue() {
-  //   this.$textInputEditTitle.value = '';
-  //   this.$textInputEditOrder.value = '';
-  // }
 
-
+  // Cancel button 
+  @Event({ eventName: 'cancel-modal' }) CancelTodoHandler: EventEmitter<null>;
+  handleCancelEditTodo(){
+    this.CancelTodoHandler.emit();
+    console.log('cancel')
+  }
+  
   render() {
     return (
       <div class= 'modal'>
         <h3>You can edit your 'to do's content from here: </h3>
 
         <hr />
-        {/* <div class={this.showForm ? 'bodyVis' : 'body'}> */}
         <div class='body'>
           <label class="label">
             <b>Replace your target 'to do's Title :</b>
@@ -65,8 +64,12 @@ export class EditTodo {
             value={this.todo?.order}
             ref={el => (this.$textInputEditOrder = el as HTMLInputElement)}
           />
-          <h5> ID : {this.todo.id}</h5>
+          <h5> ID : <span>{this.todo.id}</span></h5>
+          <hr />
 
+          <button type="submit" class='cancel' onClick={() => this.handleCancelEditTodo()}>
+            Cancel
+          </button>
           <button type="submit" class='confirm' onClick={() => this.handleEditTodo(this.todo)}>
             Confirm
           </button>

@@ -34,14 +34,14 @@ export class ToDo {
 render() {
   return (
     <div>
-      <div>Title: {this.todo.title}</div>
-      <div>ID: {this.todo.id}</div>
-      <div>Completed: {this.todo.completed ? 'YES' : 'NO'}</div>
-      <div>Order: {this.todo.order}</div>
-      <div>URL: {this.todo.url}</div>
+      <div><span>TITLE:</span> {this.todo.title}</div>
+      <div><span>ID:</span> {this.todo.id}</div>
+      <div><span>Is completed? : </span> {this.todo.completed ? 'YES' : 'NO'}</div>
+      <div><span>Order: </span> {this.todo.order}</div>
+      <div><span>URL: </span> {this.todo.url}</div>
       <br />
       <label>
-        Check if completed:
+        Check if you've done :
         <input type="checkbox" checked={this.todo.completed} onClick={() => this.handleChange()} />
       </label>
 <hr />

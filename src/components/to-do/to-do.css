@@ -14,10 +14,13 @@ label {
   line-height: 1.1;
   margin: 10px 0;
 }
-
+span{
+  color: #EB593C;
+  font-weight: bold;
+}
 .myButton {
-  box-shadow: inset 0px 1px 0px 0px #cf866c;
-  background: linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+  box-shadow: inset 0px 1px 0px 0px #eb7b77;
+    background: linear-gradient(to bottom, #db312b 5%, #b11004 50%);
   background-color: #d0451b;
   border-radius: 3px;
   border: 1px solid #942911;
@@ -26,15 +29,16 @@ label {
   color: #ffffff;
   font-family: Arial;
   font-size: 13px;
-  padding: 9px 6px;
+  padding: 6px 6px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #854629;
+  text-shadow: 0px 1px 0px #854626;
   margin-left: 75%;
   margin-bottom: 10px;
+  width: 60px;
 }
 .myButton:hover {
-  background: linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
-  background-color: #bc3315;
+  background: linear-gradient(to bottom, #6f0906 5%, #cc352a 100%);
+  background-color: #a7140a;
 }
 .myButton:active {
   position: relative;
@@ -52,10 +56,11 @@ label {
     color: #ffffff;
     font-family: Arial;
     font-size: 13px;
-    padding: 9px 6px;
+    padding: 6px 6px;
     text-decoration: none;
     text-shadow: 0px 1px 0px #854629;
     margin-top: 5px;
+    width: 60px;
 }
 .editbtn:hover {
   background: linear-gradient(to bottom, #066f3a 5%, #2acc2a 100%);

@@ -67,6 +67,7 @@ declare namespace LocalJSX {
     interface AppHome {
     }
     interface EditTodo {
+        "onCancel-modal"?: (event: CustomEvent<null>) => void;
         "onTodo-to-edit"?: (event: CustomEvent<ITodo>) => void;
         "todo"?: ITodo;
     }

@@ -32,7 +32,15 @@ async changeBooleanTotoBeenEdited(){
   this.totoBeenEdited = null;
 }
 
-  // ****************@@ Edit Title & Order / PUT @@*************
+  // ****************@@ Cancel Editing Title & Order /Modal  @@*************
+  @Listen('cancel-modal')
+  async RecievCancelEditTodoListner(event: CustomEvent<ITodo>) {
+     event.detail;
+    console.log('5: changeBooleanTotoBeenEdited',event.detail);
+    await this.changeBooleanTotoBeenEdited();
+  }
+
+  // ****************@@ Edit Title & Order /Modal  / PUT @@*************
 
    //Listener to update Edit Title & Order / API
    @Listen('todo-to-update')
@@ -53,7 +61,7 @@ async changeBooleanTotoBeenEdited(){
   }
   //edit Edit Title & Order / API
   async editToDo(todo: ITodo) {
-    console.log('2: test todo Edit', todo.title, todo.order, 'url: ',todo.url);
+    console.log('2: test todo Edit');
     await fetch(todo.url, {
       method: 'PUT',
       body: JSON.stringify(todo),
@@ -143,7 +151,7 @@ async changeBooleanTotoBeenEdited(){
   render() {
     return (
       <Host>
-        <span> Les APIs 'TO DO':</span>
+        <span> The 'TO DO' application:</span>
         <hr />
         <add-todo />
         <hr />

@@ -16,14 +16,18 @@
   overflow:hidden;
  
 }
-
+span{
+  color: #EB593C;
+  font-weight: bold;
+  font-size: 1.3em;
+}
 
 .label{
   color: #4d1403;
   font-size: 15px;
 }
 .inputPop{
-  color: #c03e1e;
+  color: #EB593C;
   border-radius: 3px;
   margin: 5px 0 5px 25px;
 }
@@ -42,12 +46,35 @@
     padding: 5px 5px;
     text-decoration: none;
     text-shadow: 0px 1px 0px #854629;
-    margin-left: 90%;
+    margin-left: 70%;
+    width: 60px;
 
 }
 .confirm:hover {
   background: linear-gradient(to bottom, #066f3a 5%, #2acc2a 100%);
   background-color: #0aa74b;
+}
+.cancel{
+    box-shadow: inset 0px 1px 0px 0px #eb7b77;
+    background: linear-gradient(to bottom, #db312b 5%, #910d03 50%);
+    background-color: #ee380a;
+    border-radius: 3px;
+    border: 1px solid #013f1d;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 13px;
+    padding: 5px 5px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #854629;
+    margin-left: 5%;
+    width: 60px;
+
+}
+.cancel:hover {
+  background: linear-gradient(to bottom, #6f0906 5%, #cc352a 100%);
+  background-color: #a7140a;
 }
 
 
