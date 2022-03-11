@@ -151,9 +151,7 @@ async changeBooleanTotoBeenEdited(){
   render() {
     return (
       <Host>
-        <div class='header' >
-          <h1> The 'TO DO' application:</h1>
-        </div>
+        <div class='header' ></div>
         <hr />
         <add-todo />
         <hr />

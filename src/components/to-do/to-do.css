@@ -7,7 +7,7 @@ div {
   border-radius: 10px;
   padding-left:  15px;
   margin-bottom: 10px;
-  font-family: cursive;
+  font-family: Arial;
 }
 .outDiv{
   padding-top: 15px;
@@ -18,7 +18,7 @@ label {
   font-weight: bold;
   line-height: 1.1;
   margin: 10px 0;
-  font-family: cursive;
+  font-family: Arial;
 }
 span{
   color: #EB593C;
@@ -33,7 +33,7 @@ span{
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-family: cursive;
+  font-family: Arial;
   font-size: 13px;
   padding: 6px 6px;
   text-decoration: none;
@@ -60,7 +60,7 @@ span{
     display: inline-block;
     cursor: pointer;
     color: #ffffff;
-    font-family: cursive;
+    font-family: Arial;
     font-size: 13px;
     padding: 6px 6px;
     text-decoration: none;
