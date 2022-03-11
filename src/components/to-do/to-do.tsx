@@ -34,10 +34,10 @@ export class ToDo {
 render() {
   return (
     <div>
-      <div>Completed: {this.todo.completed ? 'YES' : 'NO'}</div>
-      <div>ID: {this.todo.id}</div>
-      <div>Order: {this.todo.order}</div>
       <div>Title: {this.todo.title}</div>
+      <div>ID: {this.todo.id}</div>
+      <div>Completed: {this.todo.completed ? 'YES' : 'NO'}</div>
+      <div>Order: {this.todo.order}</div>
       <div>URL: {this.todo.url}</div>
       <br />
       <label>
