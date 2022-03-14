@@ -20,5 +20,6 @@
   "license": "MIT",
   "main": "index.js",
   "keywords": [],
-  "author": ""
+  "author": "",
+  "dependencies": {}
 }
