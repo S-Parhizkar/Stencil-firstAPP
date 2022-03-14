@@ -94,6 +94,7 @@ async changeBooleanTotoBeenEdited(){
       } else {
         await this.postToDo(newTodo);
         await this.loadTodoList();
+        alert("Your new 'to do' been added")
       }
       return;
     }

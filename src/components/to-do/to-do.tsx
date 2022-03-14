@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter, } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter } from '@stencil/core';
 import { ITodo } from '../types';
 
 @Component({
@@ -7,7 +7,7 @@ import { ITodo } from '../types';
   shadow: true,
 })
 export class ToDo {
-   @Prop() todo: ITodo;
+  @Prop() todo: ITodo;
 
   //***** PUT /Check box ****
   @Event({ eventName: 'update-todo' }) updateTodoHandler: EventEmitter<ITodo>;
@@ -15,9 +15,9 @@ export class ToDo {
     this.updateTodoHandler.emit(this.todo);
   }
 
-    //***** Edit request todo-to-update ****
+  //***** Edit request todo-to-update ****
   @Event({ eventName: 'todo-to-update' }) sendEditTodoHandler: EventEmitter<ITodo>;
-  
+
   handleTodoToUpdate() {
     this.sendEditTodoHandler.emit(this.todo);
   }
@@ -28,28 +28,30 @@ export class ToDo {
     this.deleteTodoHandler.emit(this.todo);
   }
 
+  render() {
+    return (
+      <div class="outDiv">
+        <div class={this.todo.completed ? 'round' : ''}><span>TITLE:</span> {this.todo.title}</div>
+        <div class={this.todo.completed ? 'round' : ''}><span>Order: </span> {this.todo.order}</div>
+        <div class={this.todo.completed ? 'round' : ''}><span>ID:</span> {this.todo.id}</div>
+        <div class={this.todo.completed ? 'round' : ''}><span>Completed?: </span> {this.todo.completed ? 'YES, Done!' : 'Not yet!'}</div>
+        <div class={this.todo.completed ? 'round' : ''}><span>URL: </span> {this.todo.url}</div>
 
+        <div class={this.todo.completed ? 'round' : ''}>
+          <input type="checkbox" id="checkbox" checked={this.todo.completed} onClick={() => this.handleChange()} />
+          <label> Click here if DONE</label>
+        </div>
+        <hr />
 
-
-render() {
-  return (
-    <div class='outDiv'>
-      <div><span>TITLE:</span> {this.todo.title}</div>
-      <div><span>Order: </span> {this.todo.order}</div>
-      <div><span>ID:</span> {this.todo.id}</div>
-      <div><span>Is completed? : </span> {this.todo.completed ? 'YES' : 'NO'}</div>
-      <div><span>URL: </span> {this.todo.url}</div>
-      <label>
-        Check if you've done :
-        <input type="checkbox" checked={this.todo.completed} onClick={() => this.handleChange()} />
-      </label>
-<hr />
-      <button class="editbtn" onClick={() => this.handleTodoToUpdate()}>Edit
-      </button>
-
-      <button class="delete" onClick={() => this.handleDelete()}>delete
-      </button>
-    </div>
-  );
-}
+        <dave class='container'>
+          <button class="editbtn" onClick={() => this.handleTodoToUpdate()}>
+            Edit
+          </button>
+          <button class="delete" onClick={() => this.handleDelete()}>
+            delete
+          </button>
+        </dave>
+      </div>
+    );
+  }
 }
