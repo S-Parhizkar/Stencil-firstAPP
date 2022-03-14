@@ -22,13 +22,13 @@ export class AddTodo {
   }
   emptyinputValue(){
     this.$textInput.value = "";
-  }
+    }
   
   render() {
     return (
 
-  <div>
-          <input class={"inputTodo"} type="text"  placeholder='Add your new " to do " to this list' 
+  <div class='container '>
+          <input class={"inputTodo"} type="text"  placeholder='   Add your new " to do " to this list here' 
           ref={el => this.$textInput = el as HTMLInputElement} 
           />
           <button onClick={() => this.handleAddToDo()}> add to do</button>

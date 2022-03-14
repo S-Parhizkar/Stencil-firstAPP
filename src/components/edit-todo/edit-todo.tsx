@@ -66,13 +66,15 @@ export class EditTodo {
           />
           <h5> ID : <span>{this.todo.id}</span></h5>
           <hr />
-
-          <button type="submit" class='cancel' onClick={() => this.handleCancelEditTodo()}>
-            Cancel
-          </button>
-          <button type="submit" class='confirm' onClick={() => this.handleEditTodo(this.todo)}>
-            Confirm
-          </button>
+<div class="container">
+  
+            <button type="submit" class='cancel' onClick={() => this.handleCancelEditTodo()}>
+              Cancel
+            </button>
+            <button type="submit" class='confirm' onClick={() => this.handleEditTodo(this.todo)}>
+              Confirm
+            </button>
+</div>
         </div>
       </div>
     );
