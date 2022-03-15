@@ -3,18 +3,21 @@
 }
 
 div {
-  background: linear-gradient(#88b9b4 , #ABDCD6);  
-  border-radius: 10px;
+  background: linear-gradient(#8bc2bc , #ABDCD6);  
+  border-radius: 5px;
   padding: 5px 15px 5px 15px;
   margin-bottom: 10px;
   font-family: Arial;
 }
 .outDiv{
   padding-top: 15px;
-  background: linear-gradient(#ABDCD6, #7dada8);
+  border-radius: 10px;
+  /* background-color: #f77fbe; */
+  background: linear-gradient(#98d3cc, #6f9e99);
 }
 label {
   font-family: system-ui, sans-serif;
+  color: #1C2574;
   font-size: 1rem;
   font-weight: bold;
   line-height: 1.1;
@@ -22,13 +25,13 @@ label {
   font-family: Arial;
 }
 .round{
-  background: linear-gradient(#aef7ba, #18a737);
+  background: linear-gradient(#009786, #00A693);
 }
 
 
 
 span{
-  color: #EB593C;
+  color: #1C2574;
   font-weight: bold;
 }
 .delete {

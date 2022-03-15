@@ -64,7 +64,7 @@ export class EditTodo {
             value={this.todo?.order}
             ref={el => (this.$textInputEditOrder = el as HTMLInputElement)}
           />
-          <h5> ID : <span>{this.todo.id}</span></h5>
+          <h5> <span class="label">ID :</span> <span>{this.todo.id}</span></h5>
           <hr />
 <div class="container">
   
