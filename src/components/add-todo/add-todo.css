@@ -25,7 +25,7 @@ button {
     -webkit-user-select: none;
     touch-action: manipulation;
     margin: 0 1.5em;
-    font-family: cursive;
+    font-family: Arial;
     width: 110px;
   }
   button:hover {
@@ -51,10 +51,11 @@ button:disabled {
 }
 
 input {
+  background: linear-gradient( #c2bea6, #fdfcf7, #c2bea6);  
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  font-family: cursive;
+  font-family: Arial;
   border: 1px solid #848484;
   outline: 0;
   height: 30px;
