@@ -86,15 +86,13 @@ async changeBooleanTotoBeenEdited(){
     };
 
     const allTitles = this.todos.map(todo => todo.title);
-
     for (var i = 0; i < allTitles.length; i++) {
-      if (sentTitle == allTitles[i]) {
+      if (sentTitle = allTitles[i]) {
         alert('This task has been already added..');
         return;
       } else {
         await this.postToDo(newTodo);
         await this.loadTodoList();
-        alert("Your new 'to do' been added")
       }
       return;
     }
