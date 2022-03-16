@@ -18,8 +18,14 @@ body {
 }
 
 app-home{
-  padding: 10px ;
   background: #A21441;
+background: -moz-linear-gradient(top,  #A21441 0%, #9b0232 44%, #6d0019 100%);
+background: -webkit-linear-gradient(top,  #A21441 0%,#9b0232 44%,#6d0019 100%);
+background: linear-gradient(to bottom,  #A21441 0%,#9b0232 44%,#6d0019 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#A21441', endColorstr='#6d0019',GradientType=0 );
+
+  padding: 10px ;
+  /* background: #A21441; */
   width:80%;
   height: auto;
   position: absolute;

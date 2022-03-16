@@ -35,7 +35,7 @@ export class ToDo {
         <div class={this.todo.completed ? 'round' : ''}><span>Order: </span> {this.todo.order}</div>
         <div class={this.todo.completed ? 'round' : ''}><span>ID:</span> {this.todo.id}</div>
         <div class={this.todo.completed ? 'round' : ''}><span>Completed?: </span> {this.todo.completed ? 'YES, Done!' : 'Not yet!'}</div>
-        <div class={this.todo.completed ? 'round' : ''}><span>URL: </span> {this.todo.url}</div>
+        {/* <div class={this.todo.completed ? 'round' : ''}><span>URL: </span> {this.todo.url}</div> */}
 
         <div class={this.todo.completed ? 'round' : ''}>
           <input type="checkbox" id="checkbox" checked={this.todo.completed} onClick={() => this.handleChange()} />
