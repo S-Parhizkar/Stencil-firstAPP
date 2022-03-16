@@ -40,6 +40,10 @@ async changeBooleanTotoBeenEdited(){
     await this.changeBooleanTotoBeenEdited();
   }
 
+
+
+
+
   // ****************@@ Edit Title & Order /Modal  / PUT @@*************
 
    //Listener to update Edit Title & Order / API
@@ -55,9 +59,10 @@ async changeBooleanTotoBeenEdited(){
     const todoEdit = event.detail;
   console.log('8_ todo Edit', todoEdit.title)
 
+  // const newTitle = todoEdit.title.trim().toUpperCase();
     const allTitles = this.todos.map(todo => todo.title);
+    console.log('7- all title :', allTitles)
     for (var i = 0; i < allTitles.length; i++) {
-      console.log('9_ allTitles[i]', todoEdit.title)
       if (todoEdit.title === allTitles[i]) {
         alert('This task has been already added..');
         return;
@@ -69,8 +74,6 @@ async changeBooleanTotoBeenEdited(){
       }
       return;
     }
-
-   
   }
   //edit Edit Title & Order / API
   async editToDo(todo: ITodo) {
@@ -80,6 +83,12 @@ async changeBooleanTotoBeenEdited(){
       body: JSON.stringify(todo),
     });
   }
+
+
+
+
+
+
 
   // ****************@@ POST @@*************
   
@@ -99,6 +108,7 @@ async changeBooleanTotoBeenEdited(){
     };
 
     const allTitles = this.todos.map(todo => todo.title);
+    console.log('9- all title :', allTitles)
     for (var i = 0; i < allTitles.length; i++) {
       if (sentTitle === allTitles[i]) {
         alert('This task has been already added..');
