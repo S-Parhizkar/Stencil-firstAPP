@@ -53,11 +53,24 @@ async changeBooleanTotoBeenEdited(){
   @Listen('todo-to-edit')
   async editTodoListner(event: CustomEvent<ITodo>) {
     const todoEdit = event.detail;
-  
-    console.log('1: test todo Edit', todoEdit);
-    await this.editToDo(todoEdit);
-    await this.loadTodoList();
-     await this.changeBooleanTotoBeenEdited();
+  console.log('8_ todo Edit', todoEdit.title)
+
+    const allTitles = this.todos.map(todo => todo.title);
+    for (var i = 0; i < allTitles.length; i++) {
+      console.log('9_ allTitles[i]', todoEdit.title)
+      if (todoEdit.title === allTitles[i]) {
+        alert('This task has been already added..');
+        return;
+      } else {
+        console.log('1: test todo Edit', todoEdit);
+        await this.editToDo(todoEdit);
+        await this.loadTodoList();
+         await this.changeBooleanTotoBeenEdited();
+      }
+      return;
+    }
+
+   
   }
   //edit Edit Title & Order / API
   async editToDo(todo: ITodo) {
@@ -73,7 +86,7 @@ async changeBooleanTotoBeenEdited(){
   //Listener to add More "to do" to API
   @Listen('add-more')
   async postTodoListener(event: CustomEvent<string>) {
-    let sentTitle = event.detail;
+    let sentTitle = event.detail.trim().toUpperCase();
     console.log('1- test post from app-home', sentTitle);
 
     const allNumOrder = this.todos.map(todo => todo.order).filter(x => x !== undefined);

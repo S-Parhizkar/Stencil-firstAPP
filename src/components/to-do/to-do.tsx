@@ -38,8 +38,8 @@ export class ToDo {
         {/* <div class={this.todo.completed ? 'round' : ''}><span>URL: </span> {this.todo.url}</div> */}
 
         <div class={this.todo.completed ? 'round' : ''}>
-          <input type="checkbox" id="checkbox" checked={this.todo.completed} onClick={() => this.handleChange()} />
-          <label> Click here if DONE</label>
+         
+          <label> <input type="checkbox" id="checkbox" checked={this.todo.completed} onClick={() => this.handleChange()} /> Click here if DONE</label>
         </div>
         <hr />
 

@@ -22,7 +22,7 @@ export class EditTodo {
       order,
     };
     this.editTodoHandler.emit(newTodo );
-    console.log('Confirm' ,todo)
+    console.log('Confirm to do' ,todo)
   }
 
   // Cancel button 
