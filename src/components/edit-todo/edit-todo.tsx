@@ -14,7 +14,7 @@ export class EditTodo {
   @Event({ eventName: 'todo-to-edit' }) editTodoHandler: EventEmitter<ITodo>;
 
   handleEditTodo(todo: ITodo) {
-    const title = this.$textInputEditTitle.value;
+    const title = this.$textInputEditTitle.value.trim().toUpperCase();
     const order = Number(this.$textInputEditOrder.value);
     const newTodo = {
       ...this.todo,
@@ -22,7 +22,7 @@ export class EditTodo {
       order,
     };
     this.editTodoHandler.emit(newTodo );
-    console.log('Confirm' ,todo)
+    console.log('Confirm to do' ,todo)
   }
 
   // Cancel button 

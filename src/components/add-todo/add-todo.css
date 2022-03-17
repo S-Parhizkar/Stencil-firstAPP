@@ -8,31 +8,30 @@
 
 button {
   box-shadow: inset 0px 1px 0px 0px #1C2574;
+    width: 110px;
+    user-select: none;
+    transition: all .3s;
+    touch-action: manipulation;
+    text-decoration: none;
+    text-align: center;
+    position: relative;
+    padding: 0.5em 1em;
+    outline: 0;
+    margin: 0 1.5em;
+    font-weight: 600;
+    font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
+    font-family: Arial;
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+    border: 1px solid #6b1805;    border-radius: 30px;
     background: linear-gradient(to bottom, #7ec1f1 5%, #252e81 50%);
     /* background-color: #0078d0; */
-    border: 0;
-    border-radius: 30px;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
-    font-weight: 600;
-    outline: 0;
-    padding: 0.5em 1em;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    transition: all .3s;
-    user-select: none;
     -webkit-user-select: none;
-    touch-action: manipulation;
-    margin: 0 1.5em;
-    font-family: Arial;
-    width: 110px;
   }
   button:hover {
-    box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
-    transform: scale(1);
+    box-shadow: rgba(121, 3, 3, 0.2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+    transform: scale(1.05);
   }
 
 .btn:disabled {

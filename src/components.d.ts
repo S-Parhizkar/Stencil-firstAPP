@@ -10,6 +10,7 @@ export namespace Components {
     interface AddTodo {
     }
     interface AppHome {
+        "isLoading": boolean;
     }
     interface EditTodo {
         "todo": ITodo;
@@ -65,6 +66,7 @@ declare namespace LocalJSX {
         "onAdd-more"?: (event: CustomEvent<string>) => void;
     }
     interface AppHome {
+        "isLoading"?: boolean;
     }
     interface EditTodo {
         "onCancel-modal"?: (event: CustomEvent<null>) => void;

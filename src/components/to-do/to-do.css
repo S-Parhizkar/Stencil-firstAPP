@@ -36,10 +36,10 @@ span{
 }
 .delete {
   box-shadow: inset 0px 1px 0px 0px #EB593C;
-  background: linear-gradient(to bottom, #EB593C 5%, #a8260c 50%);
+  background: linear-gradient(to bottom, #EB593C 5%, #911901 50%);
   background-color: #EB593C;
   border-radius: 15px;
-  border: 1px solid #942913;
+  border: 1px solid #02640f;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
