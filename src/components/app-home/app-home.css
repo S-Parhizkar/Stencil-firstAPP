@@ -21,3 +21,42 @@ width: 100%;
 height: 100px;
 text-align: center;
 }
+
+#loader {
+  background-color: #8bc2bc;
+   border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: Arial;
+  padding-top: 15%;
+  border-radius: 10px;
+height: 300px;
+}
+b{
+  font-size: 150%;
+  margin-left: 45%;
+  
+}
+
+.rotate{
+ background-image: url(/assets/isloading.png);
+ animation: rotation 8s infinite linear;
+ background-repeat: no-repeat;
+ background-size: 100%;
+ background-position-x: center;
+background-position-y: center;
+ width: 100px;
+ height: 100px;
+ margin-left: 45%;
+ margin-top: 0;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+#noloader{
+  display: none;
+}

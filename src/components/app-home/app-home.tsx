@@ -1,4 +1,4 @@
-import { Component, h, State, Host, Listen } from '@stencil/core';
+import { Component, h, State, Host, Listen, Prop } from '@stencil/core';
 import { ITodo } from '../types';
 
 @Component({
@@ -9,6 +9,7 @@ import { ITodo } from '../types';
 export class AppHome {
   @State() todos: Array<ITodo> = [];
   @State() totoBeenEdited: ITodo
+  @Prop() isLoading: boolean= false;
   
   // ****************@@ Check / PUT @@*************
   //Listener to update check box / API
@@ -61,7 +62,7 @@ async changeBooleanTotoBeenEdited(){
 
   // const newTitle = todoEdit.title.trim().toUpperCase();
     const allTitles = this.todos.map(todo => todo.title);
-    console.log('7- all title :', allTitles)
+    console.log('7- all title in EDIT TITLE :', allTitles)
     for (var i = 0; i < allTitles.length; i++) {
       if (todoEdit.title === allTitles[i]) {
         alert('This task has been already added..');
@@ -108,9 +109,9 @@ async changeBooleanTotoBeenEdited(){
     };
 
     const allTitles = this.todos.map(todo => todo.title);
-    console.log('9- all title :', allTitles)
+    console.log('9- all title in ADD TODO:', allTitles)
     for (var i = 0; i < allTitles.length; i++) {
-      if (sentTitle === allTitles[i]) {
+      if (sentTitle == allTitles[i]) {
         alert('This task has been already added..');
         return;
       } else {
@@ -153,20 +154,30 @@ async changeBooleanTotoBeenEdited(){
   }
 
   // ******************@@ LOADING @@*************
+
   async loadTodoList() {
+    this.isLoading=true
     await fetch('https://dm-tdb-01.azurewebsites.net/api/ToDo')
       .then(response => response.json())
       .then(json => {
         this.todos = json;
+        this.cancelLoading();
       });
     this.todos.sort(function (firstEl: ITodo, secondEl: ITodo) {
       return secondEl.order - firstEl.order;
+      
     });
   }
 
   async componentWillLoad() {
     this.loadTodoList();
-  }
+    
+    }
+
+  cancelLoading() {
+   this.isLoading = false;
+   console.log( 'this LOADING',this.isLoading)
+ }
 
   // ********************* RENDERING ***************
 
@@ -179,6 +190,9 @@ async changeBooleanTotoBeenEdited(){
         <hr />
         {Boolean(this.totoBeenEdited) && <edit-todo todo={this.totoBeenEdited} />}
         <hr />
+        <div id={this.isLoading ? 'loader' : 'noloader'}> 
+        <div class="rotate"></div>
+        <b>Loading ...</b></div>
         <list-todo todos={this.todos} />
       </Host>
     );
