@@ -5,15 +5,14 @@ import { ITodo } from '../types';
   styleUrl: 'list-todo.css',
   shadow: true,
 })
-
 export class ListTodo {
   @Prop() todos: Array<ITodo> = [];
-
 
   render() {
     return (
       <Host>
-        {this.todos.map(todo => (<to-do todo={todo} /> ))}
+        {this.todos.map(todo => (<to-do todo={todo} />
+        ))}
       </Host>
     );
   }

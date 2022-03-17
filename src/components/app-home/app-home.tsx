@@ -9,7 +9,7 @@ import { ITodo } from '../types';
 export class AppHome {
   @State() todos: Array<ITodo> = [];
   @State() totoBeenEdited: ITodo
-  @Prop() isLoading: boolean= false;
+  @Prop() isLoading: boolean
   
   // ****************@@ Check / PUT @@*************
   //Listener to update check box / API
@@ -97,8 +97,6 @@ async changeBooleanTotoBeenEdited(){
   @Listen('add-more')
   async postTodoListener(event: CustomEvent<string>) {
     let sentTitle = event.detail.trim().toUpperCase();
-    console.log('1- test post from app-home', sentTitle);
-
     const allNumOrder = this.todos.map(todo => todo.order).filter(x => x !== undefined);
     //** find highest order */
     let highestOrder: number = Math.max(...allNumOrder);
@@ -109,7 +107,6 @@ async changeBooleanTotoBeenEdited(){
     };
 
     const allTitles = this.todos.map(todo => todo.title);
-    console.log('9- all title in ADD TODO:', allTitles)
     for (var i = 0; i < allTitles.length; i++) {
       if (sentTitle == allTitles[i]) {
         alert('This task has been already added..');
@@ -176,7 +173,6 @@ async changeBooleanTotoBeenEdited(){
 
   cancelLoading() {
    this.isLoading = false;
-   console.log( 'this LOADING',this.isLoading)
  }
 
   // ********************* RENDERING ***************

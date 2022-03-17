@@ -1,50 +1,50 @@
 :host {
   display: block;
 }
-.container{
+.container {
+  justify-content: space-between;
   display: flex;
-  justify-content: space-between; 
 }
 
 button {
-  box-shadow: inset 0px 1px 0px 0px #1C2574;
-    width: 110px;
-    user-select: none;
-    transition: all .3s;
-    touch-action: manipulation;
-    text-decoration: none;
-    text-align: center;
-    position: relative;
-    padding: 0.5em 1em;
-    outline: 0;
-    margin: 0 1.5em;
-    font-weight: 600;
-    font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
-    font-family: Arial;
-    display: inline-block;
-    cursor: pointer;
-    color: #fff;
-    border: 1px solid #6b1805;    border-radius: 30px;
-    background: linear-gradient(to bottom, #7ec1f1 5%, #252e81 50%);
-    /* background-color: #0078d0; */
-    -webkit-user-select: none;
-  }
-  button:hover {
-    box-shadow: rgba(121, 3, 3, 0.2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
-    transform: scale(1.05);
-  }
+  width: 110px;
+  user-select: none;
+  transition: all 0.3s;
+  touch-action: manipulation;
+  text-decoration: none;
+  text-align: center;
+  position: relative;
+  padding: 0.5em 1em;
+  outline: 0;
+  margin: 0 1.5em;
+  font-weight: 600;
+  font-family: system-ui, -apple-system, system-ui, 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue', sans-serif;
+  font-family: Arial;
+  display: inline-block;
+  cursor: pointer;
+  color: #fff;
+  box-shadow: inset 0px 1px 0px 0px #1c2574;
+  border: 1px solid #6b1805;
+  border-radius: 30px;
+  background: linear-gradient(to bottom, #7ec1f1 5%, #252e81 50%);
+  -webkit-user-select: none;
+}
+button:hover {
+  box-shadow: rgba(121, 3, 3, 0.2) 0 3px 15px inset, rgba(0, 0, 0, 0.1) 0 3px 5px, rgba(0, 0, 0, 0.1) 0 10px 13px;
+  transform: scale(1.05);
+}
 
 .btn:disabled {
   opacity: 0.5;
 }
 
 span {
-  color: var(--primary-70);
-  font-weight: bold;
-  font-size: 20px;
+  padding: 0.2em 0.5em;
   margin: 0 0.25em;
   height: 30px;
-  padding: 0.2em 0.5em;
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--primary-70);
 }
 
 button:disabled {
@@ -52,14 +52,14 @@ button:disabled {
 }
 
 input {
-  background: linear-gradient( #c2bea6, #fdfcf7, #c2bea6);  
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
+  width: 70%;
+  outline: 0;
+  margin-left: 0.5rem;
+  height: 30px;
   font-family: Arial;
   border: 1px solid #848484;
-  outline: 0;
-  height: 30px;
-  width: 70%;
-  margin-left: 0.5rem;
+  border-radius: 5px;
+  background: linear-gradient(#c2bea6, #fdfcf7, #c2bea6);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
 }
