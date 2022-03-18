@@ -48,7 +48,7 @@ export class ToDo {
             Edit
           </button>
           <button class="delete" onClick={() => this.handleDelete()}>
-            delete
+            Delete
           </button>
         </dave>
       </div>
