@@ -60,7 +60,7 @@ async changeBooleanTotoBeenEdited(){
     const allTitles = this.todos.map(todo => todo.title);
     console.log('7- all title in EDIT TITLE :', allTitles)
     for (var i = 0; i < allTitles.length; i++) {
-      if (todoEdit.title = allTitles[i]) {
+      if (todoEdit.title == allTitles[i]) {
         alert('This task has been already added..');
         return;
       } else {
@@ -97,14 +97,19 @@ async changeBooleanTotoBeenEdited(){
     };
 
     const allTitles = this.todos.map(todo => todo.title);
-    for (var i = 0; i < allTitles.length; i++) {
-      if (sentTitle = allTitles[i]) {
+    console.log('allTitles', allTitles)
+    for (var i = 0; i <= allTitles.length; i++) {
+      if (sentTitle == allTitles[i]) {
         alert('This task has been already added..');
         return;
       } else {
+        if (sentTitle ==''){
+          alert('Please add some "to do" to list..');
+        }else {
         await this.postToDo(newTodo);
         await this.loadTodoList();
       }
+     }
       return;
     }
   }
@@ -118,7 +123,6 @@ async changeBooleanTotoBeenEdited(){
       .then(response => console.log(response))
       .catch(err => console.log(err));
   }
-
 
   // *******************@@ DELETE @@*************
   //Listener to delete check box / API
