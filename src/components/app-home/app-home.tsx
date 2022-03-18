@@ -61,14 +61,17 @@ async changeBooleanTotoBeenEdited(){
     console.log('7- all title in EDIT TITLE :', allTitles)
     for (var i = 0; i < allTitles.length; i++) {
       if (todoEdit.title == allTitles[i]) {
-        alert('This task has been already added..');
+        alert('This task has been already existed..');
         return;
+      }else {
+        if(todoEdit.title =='' || !todoEdit.order){
+        alert('Please don\'t leave the boxes empty..');
       } else {
-        console.log('1: test todo Edit', todoEdit);
         await this.editToDo(todoEdit);
         await this.loadTodoList();
-         await this.changeBooleanTotoBeenEdited();
+        await this.changeBooleanTotoBeenEdited();
       }
+    }
       return;
     }
   }
@@ -100,11 +103,11 @@ async changeBooleanTotoBeenEdited(){
     console.log('allTitles', allTitles)
     for (var i = 0; i <= allTitles.length; i++) {
       if (sentTitle == allTitles[i]) {
-        alert('This task has been already added..');
+        alert('This task has been already existed..');
         return;
       } else {
         if (sentTitle ==''){
-          alert('Please add some "to do" to list..');
+          alert('Box is empty, please add a "Title"..');
         }else {
         await this.postToDo(newTodo);
         await this.loadTodoList();
