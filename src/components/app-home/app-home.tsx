@@ -63,12 +63,17 @@ async changeBooleanTotoBeenEdited(){
       if (todoEdit.title == allTitles[i]) {
         alert('This task has been already added..');
         return;
+      }else {
+        if(todoEdit.title =='' || !todoEdit.order){
+          console.log('todoEdit.order',todoEdit.order)
+        alert('Please don\'t leave the boxes empty..');
       } else {
         console.log('1: test todo Edit', todoEdit);
         await this.editToDo(todoEdit);
         await this.loadTodoList();
-         await this.changeBooleanTotoBeenEdited();
+        await this.changeBooleanTotoBeenEdited();
       }
+    }
       return;
     }
   }
