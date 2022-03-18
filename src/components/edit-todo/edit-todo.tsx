@@ -8,7 +8,7 @@ import { ITodo } from '../types';
 })
 export class EditTodo {
   @Prop() todo: ITodo;
- 
+
   private $textInputEditTitle?: HTMLInputElement;
   private $textInputEditOrder?: HTMLInputElement;
   @Event({ eventName: 'todo-to-edit' }) editTodoHandler: EventEmitter<ITodo>;
@@ -21,29 +21,28 @@ export class EditTodo {
       title,
       order,
     };
-    this.editTodoHandler.emit(newTodo );
-    console.log('Confirm to do' ,todo)
+    this.editTodoHandler.emit(newTodo);
+    console.log('Confirm to do', todo);
   }
 
-  // Cancel button 
+  // Cancel button
   @Event({ eventName: 'cancel-modal' }) CancelTodoHandler: EventEmitter<null>;
-  handleCancelEditTodo(){
+  handleCancelEditTodo() {
     this.CancelTodoHandler.emit();
-    console.log('cancel')
   }
-  
+
   render() {
     return (
-      <div class= 'modal'>
+      <div class="modal">
         <h3>You can edit your 'to do's content from here: </h3>
 
         <hr />
-        <div class='body'>
+        <div class="body">
           <label class="label">
             <b>Replace your target 'to do's Title :</b>
           </label>
           <input
-            class='inputPop'
+            class="inputPop"
             type="text"
             placeholder="can change TITLE "
             name="title"
@@ -56,7 +55,7 @@ export class EditTodo {
             <b>Replace your target 'to do's order :</b>
           </label>
           <input
-            class='inputPop'
+            class="inputPop"
             type="number"
             placeholder="can change ORDER"
             name="order"
@@ -64,17 +63,19 @@ export class EditTodo {
             value={this.todo?.order}
             ref={el => (this.$textInputEditOrder = el as HTMLInputElement)}
           />
-          <h5> <span class="label">ID :</span> <span>{this.todo.id}</span></h5>
+          <h5>
+            {' '}
+            <span class="label">ID :</span> <span>{this.todo.id}</span>
+          </h5>
           <hr />
-<div class="container">
-  
-            <button type="submit" class='cancel' onClick={() => this.handleCancelEditTodo()}>
+          <div class="container">
+            <button type="submit" class="cancel" onClick={() => this.handleCancelEditTodo()}>
               Cancel
             </button>
-            <button type="submit" class='confirm' onClick={() => this.handleEditTodo(this.todo)}>
+            <button type="submit" class="confirm" onClick={() => this.handleEditTodo(this.todo)}>
               Confirm
             </button>
-</div>
+          </div>
         </div>
       </div>
     );

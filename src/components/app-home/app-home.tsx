@@ -9,7 +9,7 @@ import { ITodo } from '../types';
 export class AppHome {
   @State() todos: Array<ITodo> = [];
   @State() totoBeenEdited: ITodo
-  @Prop() isLoading: boolean= false;
+  @Prop() isLoading: boolean
   
   // ****************@@ Check / PUT @@*************
   //Listener to update check box / API
@@ -41,10 +41,6 @@ async changeBooleanTotoBeenEdited(){
     await this.changeBooleanTotoBeenEdited();
   }
 
-
-
-
-
   // ****************@@ Edit Title & Order /Modal  / PUT @@*************
 
    //Listener to update Edit Title & Order / API
@@ -64,7 +60,7 @@ async changeBooleanTotoBeenEdited(){
     const allTitles = this.todos.map(todo => todo.title);
     console.log('7- all title in EDIT TITLE :', allTitles)
     for (var i = 0; i < allTitles.length; i++) {
-      if (todoEdit.title === allTitles[i]) {
+      if (todoEdit.title = allTitles[i]) {
         alert('This task has been already added..');
         return;
       } else {
@@ -85,20 +81,12 @@ async changeBooleanTotoBeenEdited(){
     });
   }
 
-
-
-
-
-
-
   // ****************@@ POST @@*************
   
   //Listener to add More "to do" to API
   @Listen('add-more')
   async postTodoListener(event: CustomEvent<string>) {
     let sentTitle = event.detail.trim().toUpperCase();
-    console.log('1- test post from app-home', sentTitle);
-
     const allNumOrder = this.todos.map(todo => todo.order).filter(x => x !== undefined);
     //** find highest order */
     let highestOrder: number = Math.max(...allNumOrder);
@@ -109,9 +97,8 @@ async changeBooleanTotoBeenEdited(){
     };
 
     const allTitles = this.todos.map(todo => todo.title);
-    console.log('9- all title in ADD TODO:', allTitles)
     for (var i = 0; i < allTitles.length; i++) {
-      if (sentTitle == allTitles[i]) {
+      if (sentTitle = allTitles[i]) {
         alert('This task has been already added..');
         return;
       } else {
@@ -121,7 +108,6 @@ async changeBooleanTotoBeenEdited(){
       return;
     }
   }
-
   //Post to add More "to do" to API
   async postToDo(todo: Partial<ITodo>) {
     const url = 'https://dm-tdb-01.azurewebsites.net/api/ToDo';
@@ -132,6 +118,7 @@ async changeBooleanTotoBeenEdited(){
       .then(response => console.log(response))
       .catch(err => console.log(err));
   }
+
 
   // *******************@@ DELETE @@*************
   //Listener to delete check box / API
@@ -165,19 +152,16 @@ async changeBooleanTotoBeenEdited(){
       });
     this.todos.sort(function (firstEl: ITodo, secondEl: ITodo) {
       return secondEl.order - firstEl.order;
-      
     });
   }
 
   async componentWillLoad() {
     this.loadTodoList();
-    
     }
 
   cancelLoading() {
    this.isLoading = false;
-   console.log( 'this LOADING',this.isLoading)
- }
+    }
 
   // ********************* RENDERING ***************
 

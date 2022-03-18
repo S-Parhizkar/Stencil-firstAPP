@@ -3,56 +3,53 @@
 }
 
 div {
-  background: linear-gradient(#8bc2bc , #ABDCD6);  
-  border-radius: 5px;
   padding: 5px 15px 5px 15px;
   margin-bottom: 10px;
   font-family: Arial;
+  border-radius: 5px;
+  background: linear-gradient(#8bc2bc, #abdcd6);
 }
-.outDiv{
+.outDiv {
   padding-top: 15px;
   border-radius: 10px;
-  /* background-color: #f77fbe; */
   background: linear-gradient(#98d3cc, #6f9e99);
 }
 label {
-  font-family: system-ui, sans-serif;
-  color: #1C2574;
-  font-size: 1rem;
-  font-weight: bold;
-  line-height: 1.1;
   margin: 10px 0;
+  line-height: 1.1;
+  font-weight: bold;
+  font-size: 1rem;
+  font-family: system-ui, sans-serif;
   font-family: Arial;
+  color: #1c2574;
 }
-.round{
-  background: linear-gradient(#009786, #00A693);
+.round {
+  background: linear-gradient(#009786, #00a693);
 }
 
-
-
-span{
-  color: #1C2574;
+span {
+  color: #1c2574;
   font-weight: bold;
 }
 .delete {
-  box-shadow: inset 0px 1px 0px 0px #EB593C;
-  background: linear-gradient(to bottom, #EB593C 5%, #911901 50%);
-  background-color: #EB593C;
-  border-radius: 15px;
-  border: 1px solid #02640f;
+  text-shadow: 0px 1px 0px #854626;
+  text-decoration: none;
+  padding: 6px 6px;
+  font-size: 13px;
+  font-family: Arial;
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-family: Arial;
-  font-size: 13px;
-  padding: 6px 6px;
-  text-decoration: none;
-  text-shadow: 0px 1px 0px #854626;
+  box-shadow: inset 0px 1px 0px 0px #eb593c;
+  border: 1px solid #02640f;
+  border-radius: 15px;
+  background: linear-gradient(to bottom, #eb593c 5%, #911901 50%);
+  background-color: #eb593c;
 
   width: 60px;
 }
 .delete:hover {
-  box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+  box-shadow: rgba(255, 255, 255, 0.2) 0 3px 15px inset, rgba(0, 0, 0, 0.1) 0 3px 5px, rgba(0, 0, 0, 0.1) 0 10px 13px;
   transform: scale(1.05);
 }
 .delete:active {
@@ -60,28 +57,28 @@ span{
   top: 1px;
 }
 
-.editbtn{
+.editbtn {
+  width: 60px;
+  text-shadow: 0px 1px 0px #854629;
+  text-decoration: none;
+  padding: 6px 6px;
+  font-size: 13px;
+  font-family: Arial;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
   box-shadow: inset 0px 1px 0px 0px #77eb94;
+  border: 1px solid #6b1805;
+  border-radius: 15px;
   background: linear-gradient(to bottom, #2bdb48 5%, #02640f 50%);
   background-color: #0aee3b;
-    border-radius: 15px;
-    border: 1px solid #6b1805;
-    display: inline-block;
-    cursor: pointer;
-    color: #ffffff;
-    font-family: Arial;
-    font-size: 13px;
-    padding: 6px 6px;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px #854629;
-    width: 60px;
 }
 .editbtn:hover {
-   box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+  box-shadow: rgba(255, 255, 255, 0.2) 0 3px 15px inset, rgba(0, 0, 0, 0.1) 0 3px 5px, rgba(0, 0, 0, 0.1) 0 10px 13px;
   transform: scale(1.05);
 }
 
-.container{
+.container {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
 }
