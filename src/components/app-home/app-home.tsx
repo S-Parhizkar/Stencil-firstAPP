@@ -66,14 +66,20 @@ async changeBooleanTotoBeenEdited(){
       }else {
         if(todoEdit.title =='' || !todoEdit.order){
         alert('Please don\'t leave the boxes empty..');
+        return;
+      } else {
+        if (!isNaN(parseFloat(todoEdit.title))){
+        alert('The number is not allowed in "title" box..');
+        return;
       } else {
         await this.editToDo(todoEdit);
         await this.loadTodoList();
         await this.changeBooleanTotoBeenEdited();
       }
-    }
+     }
       return;
     }
+   }
   }
   //edit Edit Title & Order / API
   async editToDo(todo: ITodo) {
@@ -104,13 +110,20 @@ async changeBooleanTotoBeenEdited(){
     for (var i = 0; i <= allTitles.length; i++) {
       if (sentTitle == allTitles[i]) {
         alert('This task has been already existed..');
+        console.log('sentTitle',sentTitle)
         return;
       } else {
         if (sentTitle ==''){
           alert('Box is empty, please add a "Title"..');
-        }else {
-        await this.postToDo(newTodo);
+          return;
+        } else {
+          if (!isNaN(parseFloat(sentTitle))){
+            alert('The number is not allowed..');
+            return;
+          } else {
+            await this.postToDo(newTodo);
         await this.loadTodoList();
+        }
       }
      }
       return;
