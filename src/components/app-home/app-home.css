@@ -11,19 +11,17 @@
 
 #loader {
   padding-top: 15%;
-  padding-bottom: inherit;
+  padding-bottom: 10%;
   margin-bottom: 10px;
   height: 300px;
   font-family: Arial;
   border-radius: 10px;
   background: linear-gradient(#98d3cc, #6f9e99);
-  position: relative
 }
 b {
   font-size: 150%;
   margin-left: 43%;
-  margin-top: 10%;
-  position: absolute;
+  margin-top: 30%;
 }
 
 .rotate {
@@ -37,7 +35,6 @@ b {
   background-position-x: center;
   background-image: url(/assets/isloading.png);
   animation: rotation 8s infinite linear;
-  position: absolute;
 }
 @keyframes rotation {
   from {
