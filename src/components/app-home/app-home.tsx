@@ -163,7 +163,7 @@ async changeBooleanTotoBeenEdited(){
   // ******************@@ LOADING @@*************
 
   async loadTodoList() {
-    this.isLoading=true
+    this.isLoading=false
     await fetch('https://dm-tdb-01.azurewebsites.net/api/ToDo')
       .then(response => response.json())
       .then(json => {
@@ -180,7 +180,7 @@ async changeBooleanTotoBeenEdited(){
     }
 
   cancelLoading() {
-   this.isLoading = false;
+   this.isLoading = true;
     }
 
   // ********************* RENDERING ***************
