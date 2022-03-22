@@ -1,7 +1,8 @@
 import { Component, h, State, Host, Listen, Prop } from '@stencil/core';
 import { checkEditTodoTitle } from '../../utils/check-edit-title';
-import { checkTodoTitle } from '../../utils/check-todo-title';
+import { checkAddTodoTitle } from '../../utils/check-addtodo-title';
 import { ITodo } from '../types';
+import { findHighestnumberTodos } from '../../utils/find-todos-highestnumber';
 
 @Component({
   tag: 'app-home',
@@ -28,8 +29,8 @@ export class AppHome {
       body: JSON.stringify(todo),
     });
   }
-  // _____________change totoBeenEdited ____
 
+  // _____________change totoBeenEdited ____
   async changeBooleanTotoBeenEdited() {
     this.totoBeenEdited = null;
   }
@@ -70,21 +71,15 @@ export class AppHome {
   }
 
   // ****************@@ POST @@*************
-
   //Listener to add More "to do" to API
   @Listen('add-more')
   async postTodoListener(event: CustomEvent<string>) {
     let sentTitle = event.detail.trim().toUpperCase();
-    const allNumOrder = this.todos
-    .map(todo => todo.order)
-    .filter(x => x !== undefined);
-
-    let highestOrder = Math.max(0, ...allNumOrder);
-
-    if (checkTodoTitle(sentTitle, this.todos)) {
-      const newTodo: Partial<ITodo> = {
+   
+    if (checkAddTodoTitle(sentTitle, this.todos)) {
+        const newTodo: Partial<ITodo> = {
         title: sentTitle,
-        order: highestOrder + 1,
+        order: findHighestnumberTodos(this.todos) + 1,
       };
       await this.postToDo(newTodo);
       await this.loadTodoList();

@@ -1,8 +1,8 @@
 import { ITodo } from '../components/types';
-import { checkTodoTitle } from './check-todo-title';
+import { checkAddTodoTitle } from './check-addtodo-title';
 
 export function checkEditTodoTitle(newTitle: string, newOrder: number, todos: Array<ITodo>): boolean {
-    if(!checkTodoTitle(newTitle, todos)) {
+    if(!checkAddTodoTitle(newTitle, todos)) {
         return false
     }
 
