@@ -1,4 +1,5 @@
 import { Component, h, State, Host, Listen, Prop } from '@stencil/core';
+import { checkTodoTitle } from '../../utils/check-todo-title';
 import { ITodo } from '../types';
 
 @Component({
@@ -94,41 +95,24 @@ async changeBooleanTotoBeenEdited(){
   
   //Listener to add More "to do" to API
   @Listen('add-more')
+ 
   async postTodoListener(event: CustomEvent<string>) {
     let sentTitle = event.detail.trim().toUpperCase();
-    const allNumOrder = this.todos.map(todo => todo.order).filter(x => x !== undefined);
-    //** find highest order */
-    let highestOrder: number = Math.max(...allNumOrder);
-    //** initializing the order by adding 1 to highest order*/
-    const newTodo: Partial<ITodo> = {
+  
+  const allNumOrder = this.todos.map(todo => todo.order).filter(x => x !== undefined);
+  let highestOrder = Math.max(0,...allNumOrder);
+
+  checkTodoTitle(sentTitle, this.todos)
+if(sentTitle){ 
+  const newTodo: Partial<ITodo> = {
       title: sentTitle,
       order: highestOrder + 1,
     };
-
-    const allTitles = this.todos.map(todo => todo.title);
-    console.log('allTitles', allTitles)
-    for (var i = 0; i <= allTitles.length; i++) {
-      if (sentTitle == allTitles[i]) {
-        alert('This task has been already existed..');
-        console.log('sentTitle',sentTitle)
-        return;
-      } else {
-        if (sentTitle ==''){
-          alert('Box is empty, please add a "Title"..');
-          return;
-        } else {
-          if (!isNaN(parseFloat(sentTitle))){
-            alert('The number is not allowed..');
-            return;
-          } else {
-            await this.postToDo(newTodo);
-        await this.loadTodoList();
-        }
-      }
-     }
-      return;
-    }
+    await this.postToDo(newTodo);
+    await this.loadTodoList();
   }
+  }
+  
   //Post to add More "to do" to API
   async postToDo(todo: Partial<ITodo>) {
     const url = 'https://dm-tdb-01.azurewebsites.net/api/ToDo';
