@@ -1,6 +1,6 @@
 import { ITodo } from '../components/types';
 
-export function checkTodoTitle(newTitle: string, todos: Array<ITodo>): boolean {
+export function checkAddTodoTitle(newTitle: string, todos: Array<ITodo>): boolean {
   const hasExistingTitle = todos
   .map(todo => todo.title.trim().toUpperCase())
   .filter(title => title === newTitle)
