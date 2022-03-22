@@ -1,4 +1,5 @@
 import { Component, h, State, Host, Listen, Prop } from '@stencil/core';
+import { checkEditTodoTitle } from '../../utils/check-edit-title';
 import { checkTodoTitle } from '../../utils/check-todo-title';
 import { ITodo } from '../types';
 
@@ -6,12 +7,11 @@ import { ITodo } from '../types';
   tag: 'app-home',
   styleUrl: 'app-home.css',
 })
-
 export class AppHome {
   @State() todos: Array<ITodo> = [];
-  @State() totoBeenEdited: ITodo
-  @Prop() isLoading: boolean
-  
+  @State() totoBeenEdited: ITodo;
+  @Prop() isLoading: boolean;
+
   // ****************@@ Check / PUT @@*************
   //Listener to update check box / API
   @Listen('update-todo')
@@ -28,63 +28,41 @@ export class AppHome {
       body: JSON.stringify(todo),
     });
   }
-// _____________change totoBeenEdited ____
+  // _____________change totoBeenEdited ____
 
-async changeBooleanTotoBeenEdited(){
-  this.totoBeenEdited = null;
-}
+  async changeBooleanTotoBeenEdited() {
+    this.totoBeenEdited = null;
+  }
 
   // ****************@@ Cancel Editing Title & Order /Modal  @@*************
   @Listen('cancel-modal')
   async RecievCancelEditTodoListner(event: CustomEvent<ITodo>) {
-     event.detail;
-    console.log('5: changeBooleanTotoBeenEdited',event.detail);
+    event.detail;
+    console.log('5: changeBooleanTotoBeenEdited', event.detail);
     await this.changeBooleanTotoBeenEdited();
   }
 
   // ****************@@ Edit Title & Order /Modal  / PUT @@*************
 
-   //Listener to update Edit Title & Order / API
-   @Listen('todo-to-update')
-   async RecievEditTodoListner(event: CustomEvent<ITodo>) {
-     this.totoBeenEdited= event.detail;
-     console.log('4: test receive totoBeenEdited',this.totoBeenEdited);
-    //  await this.editToDo(totoBeenEdited);
-   }
+  //Listener to update Edit Title & Order / API
+  @Listen('todo-to-update')
+  async RecievEditTodoListner(event: CustomEvent<ITodo>) {
+    this.totoBeenEdited = event.detail;
+  }
   //Listener to update Edit Title & Order / API
   @Listen('todo-to-edit')
   async editTodoListner(event: CustomEvent<ITodo>) {
     const todoEdit = event.detail;
-  console.log('8_ todo Edit', todoEdit.title)
 
-  // const newTitle = todoEdit.title.trim().toUpperCase();
-    const allTitles = this.todos.map(todo => todo.title);
-    console.log('7- all title in EDIT TITLE :', allTitles)
-    for (var i = 0; i < allTitles.length; i++) {
-      if (todoEdit.title == allTitles[i]) {
-        alert('This task has been already existed..');
-        return;
-      }else {
-        if(todoEdit.title =='' || !todoEdit.order){
-        alert('Please don\'t leave the boxes empty..');
-        return;
-      } else {
-        if (!isNaN(parseFloat(todoEdit.title))){
-        alert('The number is not allowed in "title" box..');
-        return;
-      } else {
-        await this.editToDo(todoEdit);
-        await this.loadTodoList();
-        await this.changeBooleanTotoBeenEdited();
-      }
+    if(checkEditTodoTitle(todoEdit.title, todoEdit.order, this.todos)){
+       await this.editToDo(todoEdit);
+       await this.loadTodoList();
+       await this.changeBooleanTotoBeenEdited();
      }
-      return;
-    }
-   }
+     return;
   }
   //edit Edit Title & Order / API
   async editToDo(todo: ITodo) {
-    console.log('2: test todo Edit');
     await fetch(todo.url, {
       method: 'PUT',
       body: JSON.stringify(todo),
@@ -92,27 +70,28 @@ async changeBooleanTotoBeenEdited(){
   }
 
   // ****************@@ POST @@*************
-  
+
   //Listener to add More "to do" to API
   @Listen('add-more')
- 
   async postTodoListener(event: CustomEvent<string>) {
     let sentTitle = event.detail.trim().toUpperCase();
-  
-  const allNumOrder = this.todos.map(todo => todo.order).filter(x => x !== undefined);
-  let highestOrder = Math.max(0,...allNumOrder);
+    const allNumOrder = this.todos
+    .map(todo => todo.order)
+    .filter(x => x !== undefined);
 
-  checkTodoTitle(sentTitle, this.todos)
-if(sentTitle){ 
-  const newTodo: Partial<ITodo> = {
-      title: sentTitle,
-      order: highestOrder + 1,
-    };
-    await this.postToDo(newTodo);
-    await this.loadTodoList();
+    let highestOrder = Math.max(0, ...allNumOrder);
+
+    if (checkTodoTitle(sentTitle, this.todos)) {
+      const newTodo: Partial<ITodo> = {
+        title: sentTitle,
+        order: highestOrder + 1,
+      };
+      await this.postToDo(newTodo);
+      await this.loadTodoList();
+    }
+    return;
   }
-  }
-  
+
   //Post to add More "to do" to API
   async postToDo(todo: Partial<ITodo>) {
     const url = 'https://dm-tdb-01.azurewebsites.net/api/ToDo';
@@ -147,7 +126,7 @@ if(sentTitle){
   // ******************@@ LOADING @@*************
 
   async loadTodoList() {
-    this.isLoading=true
+    this.isLoading = true;
     await fetch('https://dm-tdb-01.azurewebsites.net/api/ToDo')
       .then(response => response.json())
       .then(json => {
@@ -161,26 +140,27 @@ if(sentTitle){
 
   async componentWillLoad() {
     this.loadTodoList();
-    }
+  }
 
   cancelLoading() {
-   this.isLoading = false;
-    }
+    this.isLoading = false;
+  }
 
   // ********************* RENDERING ***************
 
   render() {
     return (
       <Host>
-        <div class='header' ></div>
+        <div class="header"></div>
         <hr />
         <add-todo />
         <hr />
         {Boolean(this.totoBeenEdited) && <edit-todo todo={this.totoBeenEdited} />}
         <hr />
-        <div id={this.isLoading ? 'loader' : 'noloader'}> 
-        <div class="rotate"></div>
-        <b>Loading ...</b></div>
+        <div id={this.isLoading ? 'loader' : 'noloader'}>
+          <div class="rotate"></div>
+          <b>Loading ...</b>
+        </div>
         <list-todo todos={this.todos} />
       </Host>
     );
