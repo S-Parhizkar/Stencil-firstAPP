@@ -1,0 +1,9 @@
+.idea
+.stencil
+.git
+.tmp
+Dockerfile
+Jenkinsfile
+.gitignore
+*.tgz
+node_modules
