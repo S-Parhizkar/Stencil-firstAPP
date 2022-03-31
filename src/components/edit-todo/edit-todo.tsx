@@ -13,7 +13,7 @@ export class EditTodo {
   private $textInputEditOrder?: HTMLInputElement;
   @Event({ eventName: 'todo-to-edit' }) editTodoHandler: EventEmitter<ITodo>;
 
-  handleEditTodo(todo: ITodo) {
+  handleEditTodo() {
     const title = this.$textInputEditTitle.value.trim().toUpperCase();
     const order = Number(this.$textInputEditOrder.value);
     const newTodo = {
@@ -22,7 +22,6 @@ export class EditTodo {
       order,
     };
     this.editTodoHandler.emit(newTodo);
-    console.log('Confirm to do', todo);
   }
 
   // Cancel button
@@ -42,7 +41,7 @@ export class EditTodo {
             <b>Replace your target 'to do's Title :</b>
           </label>
           <input
-            class="inputPop"
+            class="input-title"
             type="text"
             placeholder="can change TITLE "
             name="title"
@@ -55,7 +54,7 @@ export class EditTodo {
             <b>Replace your target 'to do's order :</b>
           </label>
           <input
-            class="inputPop"
+            class="input-order"
             type="number"
             placeholder="can change ORDER"
             name="order"
@@ -64,7 +63,6 @@ export class EditTodo {
             ref={el => (this.$textInputEditOrder = el as HTMLInputElement)}
           />
           <h5>
-            {' '}
             <span class="label">ID :</span> <span>{this.todo.id}</span>
           </h5>
           <hr />

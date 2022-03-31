@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`to-do render 1`] = `
+<to-do>
+  <mock:shadow-root>
+    <div class="outDiv">
+      <div class="round">
+        <span>
+          TITLE:
+        </span>
+        sport
+      </div>
+      <div class="round">
+        <span>
+          Order:
+        </span>
+        3
+      </div>
+      <div class="round">
+        <span>
+          ID:
+        </span>
+        2
+      </div>
+      <div class="round">
+        <span>
+          Completed?:
+        </span>
+        YES, Done!
+      </div>
+      <div class="round">
+        <label>
+          <input checked="" id="checkbox" type="checkbox">
+          Click here if DONE
+        </label>
+      </div>
+      <hr>
+      <dave class="container">
+        <button class="editbtn">
+          Edit
+        </button>
+        <button class="delete">
+          Delete
+        </button>
+      </dave>
+    </div>
+  </mock:shadow-root>
+</to-do>
+`;

@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`edit-todo render 1`] = `
+<edit-todo>
+  <mock:shadow-root>
+    <div class="modal">
+      <h3>
+        You can edit your 'to do's content from here:
+      </h3>
+      <hr>
+      <div class="body">
+        <label class="label">
+          <b>
+            Replace your target 'to do's Title :
+          </b>
+        </label>
+        <input class="input-title" name="title" placeholder="can change TITLE " required="" type="text" value="sport">
+        <br>
+        <label class="label">
+          <b>
+            Replace your target 'to do's order :
+          </b>
+        </label>
+        <input class="input-order" name="order" placeholder="can change ORDER" required="" type="number" value="3">
+        <h5>
+          <span class="label">
+            ID :
+          </span>
+          <span>
+            2
+          </span>
+        </h5>
+        <hr>
+        <div class="container">
+          <button class="cancel" type="submit">
+            Cancel
+          </button>
+          <button class="confirm" type="submit">
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+  </mock:shadow-root>
+</edit-todo>
+`;
