@@ -30,7 +30,7 @@ it('should emit [update-todo] event to check once clicked on check nox ', async 
   page.body.addEventListener('update-todo', myMock);
   (page.root.shadowRoot.querySelector('input#checkbox') as HTMLInputElement).click();
   await page.waitForChanges();
-  expect(myMock).toBeTruthy()
+  expect(myMock).toBeCalled()
   })
 
 it('should emit [todo-to-update] event open [edit-tood] modal once clicked on edit button', async () => {
@@ -46,7 +46,7 @@ it('should emit [delete-todo] event to delete the todo once clicked on delete bu
   page.body.addEventListener('delete-todo', myMock);
   (page.root.shadowRoot.querySelector('button.delete') as HTMLInputElement).click();
   await page.waitForChanges();
-  expect(myMock).toBeNull();
+  expect(myMock).toBeCalledWith(expect.objectContaining({detail:todo}));
 })
  
 });

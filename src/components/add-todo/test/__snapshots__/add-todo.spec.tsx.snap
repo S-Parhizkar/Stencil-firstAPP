@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`add-more render 1`] = `
+<add-todo>
+  <mock:shadow-root>
+    <div class="container">
+      <input class="inputTodo" placeholder="   Add your new &quot; to do &quot; to this list here" type="text">
+      <button>
+        Add to do
+      </button>
+    </div>
+  </mock:shadow-root>
+</add-todo>
+`;
