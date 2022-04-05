@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`app-home render 1`] = `
+<app-home>
+  <div class="header"></div>
+  <hr>
+  <add-todo></add-todo>
+  <hr>
+  <hr>
+  <div id="noloader">
+    <div class="rotate"></div>
+    <b>
+      Loading ...
+    </b>
+  </div>
+  <list-todo></list-todo>
+</app-home>
+`;

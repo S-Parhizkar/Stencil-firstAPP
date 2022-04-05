@@ -1,6 +1,7 @@
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { h } from '@stencil/core';
 import { AddTodo } from '../add-todo';
+import { ITodo } from '../../types';
 
 
 describe('add-more', () => {
@@ -17,7 +18,7 @@ describe('add-more', () => {
   beforeEach(async ()=> {
     page = await newSpecPage({
       components: [AddTodo],
-      template: () => <add-todo todo={todo}></add-todo>,
+      template: () => <add-todo></add-todo>,
     });
     await page.waitForChanges();
   })
@@ -30,12 +31,12 @@ it('render', ()=>{
 it('should emit [add-more] event to add new todo once clicked on Add to do button', async () => {
   const myMock = jest.fn();
   page.body.addEventListener('add-more', myMock);
-  (page.root.shadowRoot.querySelector('input.inputTodo') as HTMLInputElement).value = "sport" as string;
   (page.root.shadowRoot.querySelector('button') as HTMLInputElement).click();
+  // (page.root.shadowRoot.querySelector('input.inputTodo') as HTMLInputElement).value = "sport" as string;
   await page.waitForChanges();
-  const mockTodo = { ...todo };
-    mockTodo.title = todo.title.toUpperCase().trim();
-    expect(myMock).toHaveBeenCalledWith(expect.objectContaining({detail:todo}));
+
+    // mockTodo.order = 100;
+    expect(myMock).toHaveBeenCalledWith(expect.objectContaining({detail: ''}));
 })
  
 });

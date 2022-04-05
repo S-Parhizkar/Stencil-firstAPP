@@ -70,7 +70,7 @@ export class EditTodo {
             <button type="submit" class="cancel" onClick={() => this.handleCancelEditTodo()}>
               Cancel
             </button>
-            <button type="submit" class="confirm" onClick={() => this.handleEditTodo(this.todo)}>
+            <button type="submit" class="confirm" onClick={() => this.handleEditTodo()}>
               Confirm
             </button>
           </div>
