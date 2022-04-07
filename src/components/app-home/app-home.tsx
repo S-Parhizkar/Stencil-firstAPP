@@ -11,7 +11,7 @@ import { findHighestnumberTodos } from '../../utils/find-todos-highestnumber';
 export class AppHome {
   @State() todos: Array<ITodo> = [];
   @State() totoBeenEdited: ITodo;
-  @Prop() isLoading: boolean;
+  @State() isLoading: boolean;
 
   // ****************@@ Check / PUT @@*************
   //Listener to update check box / API
@@ -75,7 +75,7 @@ export class AppHome {
   @Listen('add-more')
   async postTodoListener(event: CustomEvent<string>) {
     let sentTitle = event.detail.trim().toUpperCase();
-   
+   console.log('test add-more')
     if (checkAddTodoTitle(sentTitle, this.todos)) {
         const newTodo: Partial<ITodo> = {
         title: sentTitle,
@@ -128,7 +128,7 @@ export class AppHome {
         this.todos = json;
         this.cancelLoading();
       });
-    this.todos.sort(function (firstEl: ITodo, secondEl: ITodo) {
+    this.todos?.sort(function (firstEl: ITodo, secondEl: ITodo) {
       return secondEl.order - firstEl.order;
     });
   }

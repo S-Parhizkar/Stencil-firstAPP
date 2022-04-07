@@ -31,30 +31,19 @@ describe('app-home', () => {
     expect(page.root).toMatchSnapshot();
   });
 
-  // it('should listen [update-todo] event when the todo updated /checkbox is completed', async () => {
-  //   const todoUp = new CustomEvent<ITodo>('update-todo');
-  //   // const listenerMock = jest.fn();
-  //   page.body.addEventListener('update-todo', listenerMock);
-  //   // (page.root as HTMLAppHomeElement).
-  //   await page.waitForChanges(element);
-  //   const mockTodo = { ...todo };
-  //   mockTodo.completed = true
-
-  //   expect(todoUp).toBeTruthy(mockTodo.completed)
-
-  // });
-
-  it('should listen [add-more] event with add-todo component when we add new todo', async () => {
-    const todoUp = new CustomEvent<ITodo>('update-todo');
-    const listenerMock = jest.fn();
   
-    page.body.addEventListener('add-more', listenerMock);
 
-  page.root.shadowRoot
-  await page.waitForChanges(); 
-    // const mockTodo = { ...todo };
-    // mockTodo.title = todo.title.toUpperCase().trim();
-
-    expect(listenerMock).toHaveReceivedEvent({detail: todoUp});
-  });
+  // it.only('should listen [add-more] event with add-todo component when we add new todo', async () => {
+  //   const todoUpEvent = new CustomEvent<string>('add-more', {
+  //     detail: 'Hello'
+  //   });
+  //  window.fetch = jest.fn();
+  //   page.root.dispatchEvent(todoUpEvent)
+  //   expect(window.fetch).toHaveBeenCalled();
+  //   expect(window.fetch).toHaveBeenCalledWith();
+  
+  // });
 });
+
+
+// La commande: npx stencil test --spec ./src/components/app-home/test/app-home.spec.tsx --no-coverage
