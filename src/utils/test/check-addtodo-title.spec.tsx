@@ -52,10 +52,9 @@ describe('checkAddTodoTitle', () => {
     });
   it('should popup the alert existing title',  () => {
     const spy = jest.spyOn(global, 'alert')
-    checkAddTodoTitle('');
+   checkAddTodoTitle('SPORT', [TODO_01]);
     expect(spy).toHaveBeenCalledWith('This task has been already added..')
     });
-
 
 });
 

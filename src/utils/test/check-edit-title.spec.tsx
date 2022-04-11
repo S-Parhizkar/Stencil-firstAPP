@@ -1,5 +1,9 @@
+// jest.mock('../check-addtodo-title', () => {
+//   return {
+//     checkAddTodoTitle: jest.fn().mockReturnValue(true)
+//   }
+// })
 import { ITodo } from '../../components/types';
-import { checkAddTodoTitle } from '../check-addtodo-title';
 import { checkEditTodoTitle } from '../check-edit-title';
 
 describe('checkEditTodoTitle', () => {
@@ -20,10 +24,10 @@ describe('checkEditTodoTitle', () => {
     expect(result).toEqual(true);
   });
 
-  it('should always be false when the edited todo box of title and order is null or undefined', () => {
-    const result = !checkAddTodoTitle('hi', [TODO_01]);
-    expect(result).toEqual(false);
-  });
+  // it('should always be false when the edited todo box of title and order is null or undefined', () => {
+  //   const result = !checkAddTodoTitle('hi', [TODO_01]);
+  //   expect(result).toEqual(false);
+  // });
 
   it('should be false if New order is null', () => {
     const result = checkEditTodoTitle('hi', null, [TODO_01]);
