@@ -1,4 +1,4 @@
-import { Component, h, State, Host, Listen, Prop } from '@stencil/core';
+import { Component, h, State, Host, Listen } from '@stencil/core';
 import { checkEditTodoTitle } from '../../utils/check-edit-title';
 import { checkAddTodoTitle } from '../../utils/check-addtodo-title';
 import { ITodo } from '../types';
@@ -39,7 +39,6 @@ export class AppHome {
   @Listen('cancel-modal')
   async RecievCancelEditTodoListner(event: CustomEvent<ITodo>) {
     event.detail;
-    console.log('5: changeBooleanTotoBeenEdited', event.detail);
     await this.changeBooleanTotoBeenEdited();
   }
 
@@ -74,8 +73,7 @@ export class AppHome {
   //Listener to add More "to do" to API
   @Listen('add-more')
   async postTodoListener(event: CustomEvent<string>) {
-    let sentTitle = event.detail.trim().toUpperCase();
-   console.log('test add-more')
+    let sentTitle = (event.detail).trim().toUpperCase();
     if (checkAddTodoTitle(sentTitle, this.todos)) {
         const newTodo: Partial<ITodo> = {
         title: sentTitle,
@@ -128,9 +126,13 @@ export class AppHome {
         this.todos = json;
         this.cancelLoading();
       });
-    this.todos?.sort(function (firstEl: ITodo, secondEl: ITodo) {
+    
+    //   this.todos?.sort( function (firstEl: ITodo, secondEl: ITodo){
+    //   return secondEl.order - firstEl.order;});
+    //  Following the error: (TypeError: _a.sort is not a function ) change to : 
+    Array.isArray(this.todos)? this.todos?.sort(function (firstEl: ITodo, secondEl: ITodo){
       return secondEl.order - firstEl.order;
-    });
+    }) : [];
   }
 
   async componentWillLoad() {

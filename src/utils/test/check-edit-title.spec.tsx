@@ -1,8 +1,3 @@
-// jest.mock('../check-addtodo-title', () => {
-//   return {
-//     checkAddTodoTitle: jest.fn().mockReturnValue(true)
-//   }
-// })
 import { ITodo } from '../../components/types';
 import { checkEditTodoTitle } from '../check-edit-title';
 
@@ -14,20 +9,11 @@ describe('checkEditTodoTitle', () => {
     title: 'sport',
     url: 'https://my-list-to-do.netlify.app/',
   };
-  const TODO_02: Readonly<ITodo> = {
-    ...TODO_01,
-    title: 'Hello',
-  };
 
   it('should always heave a title and e order number so turn to true', () => {
     const result = checkEditTodoTitle('hi', 3, []);
     expect(result).toEqual(true);
   });
-
-  // it('should always be false when the edited todo box of title and order is null or undefined', () => {
-  //   const result = !checkAddTodoTitle('hi', [TODO_01]);
-  //   expect(result).toEqual(false);
-  // });
 
   it('should be false if New order is null', () => {
     const result = checkEditTodoTitle('hi', null, [TODO_01]);

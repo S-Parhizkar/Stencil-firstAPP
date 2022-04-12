@@ -1,7 +1,7 @@
 import { ITodo } from '../components/types';
 
 export function findHighestnumberTodos( todos: Array<ITodo> = []):  number {
-    const allNumOrder = todos
+    const allNumOrder = Object.values(todos)
     .map(todo => todo.order)
     .filter(x => x !== undefined);
 
